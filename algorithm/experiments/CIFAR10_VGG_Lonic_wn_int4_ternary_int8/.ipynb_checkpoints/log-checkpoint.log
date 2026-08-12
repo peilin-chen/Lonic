@@ -1,0 +1,164 @@
+23-Jan-26 11:46:56 - Namespace(arch='cifar_tessvgg_model', cpu=False, dataset='CIFAR10', save_path='./experiments/CIFAR10_VGG_Lonic_wn_int4_ternary_int8', data_path='/home/cts3td/Datasets', trials=1, epochs=100, optimizer='Adam', loss='CE', lr=7.8125e-06, lr_conv=7.8125e-06, batch_size=1, val_batch_size=64, label_encoding='class', activation='LinearSpike', seed=1, pretrained_model=None, training_mode='tess', delay_ls=6, scheduler=100, print_freq=5000, factors_stdp=[0.2, 0.5, 1.0, 1.0], pooling='MAX', weight_decay=0, lr_scheduler_type='ReduceLR', experiment_name='CIFAR10', wn=True, avoid_wn=False, low_precision_training=True, forward_intx=4)
+23-Jan-26 11:46:56 - => Everything will be saved to ./experiments/CIFAR10_VGG_Lonic_wn_int4_ternary_int8
+23-Jan-26 11:46:57 - CUDA GPU will be used for computations
+23-Jan-26 11:46:58 - Training set length: 50000
+23-Jan-26 11:46:58 - Test set length: 10000
+23-Jan-26 11:46:58 - Activation used: None
+23-Jan-26 11:46:58 - Total Parameters: 9222.9K
+23-Jan-26 11:46:58 - === Model ===
+23-Jan-26 11:46:58 - VGGConvModel(
+  (conv_block1): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block2): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv): Conv2dSTDP(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block3): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block4): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv): Conv2dSTDP(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block5): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block6): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv): Conv2dSTDP(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block7): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block8): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): AdaptiveAvgPool2d(output_size=1)
+      (conv): Conv2dSTDP(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 1.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (linear): Linear(in_features=512, out_features=10, bias=True)
+)
+23-Jan-26 11:46:58 - 
+=== Starting model training with 100 epochs:
+
+23-Jan-26 11:46:58 - 	 Epoch 1...
+23-Jan-26 11:50:09 - Epoch: [1][ 4999/50000]	Time  0.036 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.2952e+00 (2.4444e+00)	Acc@1 100.00 ( 12.68)	Acc@5 100.00 ( 57.08)
+23-Jan-26 11:53:19 - Epoch: [1][ 9999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.3128e+00 (2.7518e+00)	Acc@1   0.00 ( 16.37)	Acc@5   0.00 ( 65.18)
+23-Jan-26 11:56:30 - Epoch: [1][14999/50000]	Time  0.036 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.4550e+00 (2.9800e+00)	Acc@1   0.00 ( 18.83)	Acc@5 100.00 ( 69.53)
+23-Jan-26 11:59:40 - Epoch: [1][19999/50000]	Time  0.062 ( 0.038)	Data  0.017 ( 0.001)	Loss 1.4004e-01 (3.1131e+00)	Acc@1 100.00 ( 20.91)	Acc@5 100.00 ( 72.31)
+23-Jan-26 12:02:50 - Epoch: [1][24999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.2582e+01 (3.2084e+00)	Acc@1   0.00 ( 22.82)	Acc@5 100.00 ( 74.46)
+23-Jan-26 12:06:01 - Epoch: [1][29999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 3.7877e-01 (3.2871e+00)	Acc@1 100.00 ( 24.28)	Acc@5 100.00 ( 76.09)
+23-Jan-26 12:09:11 - Epoch: [1][34999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.0905e+00 (3.3402e+00)	Acc@1   0.00 ( 25.67)	Acc@5 100.00 ( 77.50)
+23-Jan-26 12:12:22 - Epoch: [1][39999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 9.6486e+00 (3.3789e+00)	Acc@1   0.00 ( 26.91)	Acc@5 100.00 ( 78.73)
+23-Jan-26 12:15:32 - Epoch: [1][44999/50000]	Time  0.061 ( 0.038)	Data  0.001 ( 0.001)	Loss 5.0120e+00 (3.4149e+00)	Acc@1   0.00 ( 28.07)	Acc@5 100.00 ( 79.81)
+23-Jan-26 12:18:42 - Epoch: [1][49999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.2606e+01 (3.4482e+00)	Acc@1   0.00 ( 29.12)	Acc@5   0.00 ( 80.67)
+23-Jan-26 12:18:42 -  @Training * Acc@1 29.120 Acc@5 80.670 Loss 3.448
+23-Jan-26 12:18:42 - One training epoch latency: 1.904e+03s | Avg Power: 187.6W | Energy: 357302.3319J
+23-Jan-26 12:18:53 -  @Testing * Acc@1 42.510 Acc@5 90.650 Loss 3.505
+23-Jan-26 12:18:53 - Best acc at epoch 1: 42.5099983215332
+23-Jan-26 12:18:53 - Last learning rate: [7.8125e-06]
+23-Jan-26 12:18:53 - 	 Epoch 2...
+23-Jan-26 12:22:05 - Epoch: [2][ 4999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.1889e+01 (3.7303e+00)	Acc@1   0.00 ( 38.36)	Acc@5 100.00 ( 88.26)
+23-Jan-26 12:25:16 - Epoch: [2][ 9999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 3.7798e-01 (3.7188e+00)	Acc@1 100.00 ( 39.52)	Acc@5 100.00 ( 89.08)
+23-Jan-26 12:28:27 - Epoch: [2][14999/50000]	Time  0.038 ( 0.038)	Data  0.001 ( 0.001)	Loss 8.6341e-01 (3.7483e+00)	Acc@1   0.00 ( 39.79)	Acc@5 100.00 ( 89.21)
+23-Jan-26 12:31:39 - Epoch: [2][19999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.0633e+01 (3.7798e+00)	Acc@1   0.00 ( 40.03)	Acc@5 100.00 ( 89.19)
+23-Jan-26 12:34:50 - Epoch: [2][24999/50000]	Time  0.038 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.0266e-06 (3.7652e+00)	Acc@1 100.00 ( 40.28)	Acc@5 100.00 ( 89.42)
+23-Jan-26 12:38:01 - Epoch: [2][29999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 7.7483e-05 (3.7722e+00)	Acc@1 100.00 ( 40.55)	Acc@5 100.00 ( 89.61)
+23-Jan-26 12:41:12 - Epoch: [2][34999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 5.8333e-01 (3.7835e+00)	Acc@1 100.00 ( 40.78)	Acc@5 100.00 ( 89.76)
+23-Jan-26 12:44:23 - Epoch: [2][39999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 6.1137e+00 (3.7741e+00)	Acc@1   0.00 ( 41.15)	Acc@5 100.00 ( 89.92)
+23-Jan-26 12:47:35 - Epoch: [2][44999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 5.6863e-01 (3.7737e+00)	Acc@1 100.00 ( 41.44)	Acc@5 100.00 ( 90.04)
+23-Jan-26 12:50:46 - Epoch: [2][49999/50000]	Time  0.036 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.2913e-01 (3.7606e+00)	Acc@1 100.00 ( 41.76)	Acc@5 100.00 ( 90.20)
+23-Jan-26 12:50:46 -  @Training * Acc@1 41.760 Acc@5 90.200 Loss 3.761
+23-Jan-26 12:50:46 - One training epoch latency: 1.913e+03s | Avg Power: 189.4W | Energy: 362311.9130J
+23-Jan-26 12:50:57 -  @Testing * Acc@1 50.130 Acc@5 93.650 Loss 3.521
+23-Jan-26 12:50:57 - Best acc at epoch 2: 50.12999725341797
+23-Jan-26 12:50:57 - Last learning rate: [7.8125e-06]
+23-Jan-26 12:50:57 - 	 Epoch 3...
+23-Jan-26 12:54:09 - Epoch: [3][ 4999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.1377e-01 (3.7020e+00)	Acc@1 100.00 ( 46.60)	Acc@5 100.00 ( 91.88)
+23-Jan-26 12:57:20 - Epoch: [3][ 9999/50000]	Time  0.038 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.3339e-04 (3.7416e+00)	Acc@1 100.00 ( 45.54)	Acc@5 100.00 ( 91.86)
+23-Jan-26 13:00:32 - Epoch: [3][14999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 7.6948e+00 (3.7282e+00)	Acc@1   0.00 ( 45.81)	Acc@5   0.00 ( 91.81)
+23-Jan-26 13:03:43 - Epoch: [3][19999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 3.3169e-03 (3.7296e+00)	Acc@1 100.00 ( 46.25)	Acc@5 100.00 ( 91.85)
+23-Jan-26 13:06:55 - Epoch: [3][24999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.3132e+01 (3.7112e+00)	Acc@1   0.00 ( 46.71)	Acc@5 100.00 ( 91.98)
+23-Jan-26 13:10:07 - Epoch: [3][29999/50000]	Time  0.038 ( 0.038)	Data  0.001 ( 0.001)	Loss 7.1297e+00 (3.7080e+00)	Acc@1   0.00 ( 46.99)	Acc@5 100.00 ( 91.98)
+23-Jan-26 13:13:19 - Epoch: [3][34999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.3064e-04 (3.7042e+00)	Acc@1 100.00 ( 47.28)	Acc@5 100.00 ( 92.14)
+23-Jan-26 13:16:30 - Epoch: [3][39999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.8115e-01 (3.7007e+00)	Acc@1 100.00 ( 47.52)	Acc@5 100.00 ( 92.26)
+23-Jan-26 13:19:42 - Epoch: [3][44999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 3.0517e-05 (3.6973e+00)	Acc@1 100.00 ( 47.77)	Acc@5 100.00 ( 92.37)
+23-Jan-26 13:22:54 - Epoch: [3][49999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.6909e+00)	Acc@1 100.00 ( 48.02)	Acc@5 100.00 ( 92.48)
+23-Jan-26 13:22:54 -  @Training * Acc@1 48.016 Acc@5 92.478 Loss 3.691
+23-Jan-26 13:22:54 - One training epoch latency: 1.917e+03s | Avg Power: 189.1W | Energy: 362585.7144J
+23-Jan-26 13:23:04 -  @Testing * Acc@1 55.150 Acc@5 94.880 Loss 3.377
+23-Jan-26 13:23:04 - Best acc at epoch 3: 55.14999771118164
+23-Jan-26 13:23:04 - Last learning rate: [7.8125e-06]
+23-Jan-26 13:23:04 - 	 Epoch 4...
+23-Jan-26 13:26:16 - Epoch: [4][ 4999/50000]	Time  0.038 ( 0.038)	Data  0.001 ( 0.001)	Loss 7.9004e-01 (3.5222e+00)	Acc@1   0.00 ( 51.26)	Acc@5 100.00 ( 93.56)
+23-Jan-26 13:29:27 - Epoch: [4][ 9999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.0721e+00 (3.5050e+00)	Acc@1   0.00 ( 52.17)	Acc@5 100.00 ( 93.69)
+23-Jan-26 13:32:39 - Epoch: [4][14999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.7140e-04 (3.5423e+00)	Acc@1 100.00 ( 51.91)	Acc@5 100.00 ( 93.55)
+23-Jan-26 13:35:50 - Epoch: [4][19999/50000]	Time  0.038 ( 0.038)	Data  0.001 ( 0.001)	Loss 4.7267e-04 (3.5708e+00)	Acc@1 100.00 ( 51.76)	Acc@5 100.00 ( 93.40)
+23-Jan-26 13:39:02 - Epoch: [4][24999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.2654e+01 (3.5603e+00)	Acc@1   0.00 ( 51.92)	Acc@5   0.00 ( 93.41)
+23-Jan-26 13:42:13 - Epoch: [4][29999/50000]	Time  0.039 ( 0.038)	Data  0.001 ( 0.001)	Loss 3.4873e+00 (3.5418e+00)	Acc@1   0.00 ( 52.16)	Acc@5 100.00 ( 93.55)
+23-Jan-26 13:45:25 - Epoch: [4][34999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.1122e-04 (3.5307e+00)	Acc@1 100.00 ( 52.42)	Acc@5 100.00 ( 93.64)
+23-Jan-26 13:48:36 - Epoch: [4][39999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.5933e+00 (3.5205e+00)	Acc@1   0.00 ( 52.60)	Acc@5 100.00 ( 93.71)
+23-Jan-26 13:51:48 - Epoch: [4][44999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 5.3919e+00 (3.5139e+00)	Acc@1   0.00 ( 52.74)	Acc@5 100.00 ( 93.80)
+23-Jan-26 13:54:59 - Epoch: [4][49999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 3.9976e-02 (3.5039e+00)	Acc@1 100.00 ( 52.98)	Acc@5 100.00 ( 93.87)
+23-Jan-26 13:54:59 -  @Training * Acc@1 52.978 Acc@5 93.866 Loss 3.504
+23-Jan-26 13:54:59 - One training epoch latency: 1.915e+03s | Avg Power: 189.1W | Energy: 362176.9300J
+23-Jan-26 13:55:10 -  @Testing * Acc@1 59.440 Acc@5 95.540 Loss 3.362
+23-Jan-26 13:55:10 - Best acc at epoch 4: 59.439998626708984
+23-Jan-26 13:55:10 - Last learning rate: [7.8125e-06]
+23-Jan-26 13:55:10 - 	 Epoch 5...
+23-Jan-26 13:58:21 - Epoch: [5][ 4999/50000]	Time  0.040 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.3186e+00 (3.3404e+00)	Acc@1   0.00 ( 57.00)	Acc@5 100.00 ( 94.24)
+23-Jan-26 14:01:32 - Epoch: [5][ 9999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 2.3354e+01 (3.3301e+00)	Acc@1   0.00 ( 56.85)	Acc@5   0.00 ( 94.71)
+23-Jan-26 14:04:42 - Epoch: [5][14999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 1.5497e-06 (3.3359e+00)	Acc@1 100.00 ( 56.52)	Acc@5 100.00 ( 94.94)
+23-Jan-26 14:07:53 - Epoch: [5][19999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 5.0294e-03 (3.3022e+00)	Acc@1 100.00 ( 57.06)	Acc@5 100.00 ( 94.96)
+23-Jan-26 14:11:04 - Epoch: [5][24999/50000]	Time  0.037 ( 0.038)	Data  0.001 ( 0.001)	Loss 3.6413e+00 (3.3150e+00)	Acc@1   0.00 ( 56.96)	Acc@5 100.00 ( 94.91)

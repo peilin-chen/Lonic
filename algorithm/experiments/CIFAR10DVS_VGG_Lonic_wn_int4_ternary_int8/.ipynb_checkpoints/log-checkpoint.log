@@ -1,0 +1,642 @@
+22-Jan-26 07:29:55 - Namespace(arch='dvscifar10_tessvgg_model', cpu=False, dataset='CIFAR10DVS', save_path='./experiments/CIFAR10DVS_VGG_Lonic_wn_int4_ternary_int8', data_path='../SLTT-main/data', trials=1, epochs=100, optimizer='Adam', loss='CE', lr=1.5625e-05, lr_conv=1.5625e-05, batch_size=1, val_batch_size=64, label_encoding='class', activation='LinearSpike', seed=10, pretrained_model=None, training_mode='tess', delay_ls=10, scheduler=100, print_freq=1000, factors_stdp=[0.2, 0.5, 0.0, 1.0], pooling='MAX', weight_decay=0, lr_scheduler_type='ReduceLR', experiment_name='DVSCIFAR10', wn=True, avoid_wn=False, low_precision_training=True, forward_intx=4)
+22-Jan-26 07:29:55 - => Everything will be saved to ./experiments/CIFAR10DVS_VGG_Lonic_wn_int4_ternary_int8
+22-Jan-26 07:29:56 - CUDA GPU will be used for computations
+22-Jan-26 07:29:56 - Training set length: 9000
+22-Jan-26 07:29:56 - Test set length: 1000
+22-Jan-26 07:29:56 - Activation used: None
+22-Jan-26 07:29:56 - Total Parameters: 9222.3K
+22-Jan-26 07:29:56 - === Model ===
+22-Jan-26 07:29:56 - VGGConvModel(
+  (conv_block1): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(2, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block2): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv): Conv2dSTDP(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block3): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block4): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv): Conv2dSTDP(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block5): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block6): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (conv): Conv2dSTDP(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block7): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): Identity()
+      (conv): Conv2dSTDP(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (conv_block8): LocalLearningSignalGenerationLayer(
+    (block): ConvBlock(
+      (pool): AdaptiveAvgPool2d(output_size=1)
+      (conv): Conv2dSTDP(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, threshold=0.60, leak=0.50, reset=soft, grad_leak=False, grad_threshold=False, factors=tensor([0.2000, 0.5000, 0.0000, 1.0000], device='cuda:0'))
+      (dropout): DropoutLIF(
+        Dropout(p=0.0, inplace=False)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (linear): Linear(in_features=512, out_features=10, bias=True)
+)
+22-Jan-26 07:29:56 - 
+=== Starting model training with 100 epochs:
+
+22-Jan-26 07:29:56 - 	 Epoch 1...
+22-Jan-26 07:31:16 - Epoch: [1][ 999/9000]	Time  0.074 ( 0.080)	Data  0.001 ( 0.002)	Loss 1.0855e+00 (3.3321e+00)	Acc@1   0.00 ( 13.80)	Acc@5 100.00 ( 63.00)
+22-Jan-26 07:32:36 - Epoch: [1][1999/9000]	Time  0.079 ( 0.080)	Data  0.001 ( 0.002)	Loss 1.9984e+00 (4.2176e+00)	Acc@1   0.00 ( 19.35)	Acc@5 100.00 ( 70.30)
+22-Jan-26 07:33:55 - Epoch: [1][2999/9000]	Time  0.093 ( 0.079)	Data  0.001 ( 0.002)	Loss 3.3724e-02 (4.6886e+00)	Acc@1 100.00 ( 22.30)	Acc@5 100.00 ( 73.57)
+22-Jan-26 07:35:11 - Epoch: [1][3999/9000]	Time  0.083 ( 0.079)	Data  0.001 ( 0.002)	Loss 9.9261e+00 (4.9431e+00)	Acc@1   0.00 ( 24.93)	Acc@5   0.00 ( 75.83)
+22-Jan-26 07:36:29 - Epoch: [1][4999/9000]	Time  0.081 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.2462e+00 (5.0904e+00)	Acc@1   0.00 ( 27.12)	Acc@5 100.00 ( 77.76)
+22-Jan-26 07:37:45 - Epoch: [1][5999/9000]	Time  0.068 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.8569e+00 (5.2137e+00)	Acc@1   0.00 ( 28.47)	Acc@5 100.00 ( 79.22)
+22-Jan-26 07:39:03 - Epoch: [1][6999/9000]	Time  0.070 ( 0.078)	Data  0.001 ( 0.002)	Loss 8.4567e+00 (5.3145e+00)	Acc@1   0.00 ( 29.57)	Acc@5 100.00 ( 79.94)
+22-Jan-26 07:40:20 - Epoch: [1][7999/9000]	Time  0.095 ( 0.078)	Data  0.003 ( 0.002)	Loss 3.9728e+00 (5.3367e+00)	Acc@1   0.00 ( 30.83)	Acc@5 100.00 ( 81.01)
+22-Jan-26 07:41:37 - Epoch: [1][8999/9000]	Time  0.060 ( 0.078)	Data  0.002 ( 0.002)	Loss 1.4050e+01 (5.4362e+00)	Acc@1   0.00 ( 31.56)	Acc@5 100.00 ( 81.63)
+22-Jan-26 07:41:37 -  @Training * Acc@1 31.556 Acc@5 81.633 Loss 5.436
+22-Jan-26 07:41:37 - One training epoch latency: 700.2s | Avg Power: 183.4W | Energy: 128443.2141J
+22-Jan-26 07:41:47 -  @Testing * Acc@1 38.100 Acc@5 86.200 Loss 6.143
+22-Jan-26 07:41:47 - Best acc at epoch 1: 38.10000228881836
+22-Jan-26 07:41:47 - Last learning rate: [1.5625e-05]
+22-Jan-26 07:41:47 - 	 Epoch 2...
+22-Jan-26 07:43:05 - Epoch: [2][ 999/9000]	Time  0.067 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.2412e+00 (5.6266e+00)	Acc@1   0.00 ( 41.30)	Acc@5 100.00 ( 86.60)
+22-Jan-26 07:44:22 - Epoch: [2][1999/9000]	Time  0.076 ( 0.077)	Data  0.001 ( 0.002)	Loss 3.5568e+00 (5.6328e+00)	Acc@1   0.00 ( 42.90)	Acc@5 100.00 ( 87.20)
+22-Jan-26 07:45:39 - Epoch: [2][2999/9000]	Time  0.080 ( 0.077)	Data  0.001 ( 0.002)	Loss 5.3701e-04 (5.6344e+00)	Acc@1 100.00 ( 42.77)	Acc@5 100.00 ( 88.00)
+22-Jan-26 07:46:56 - Epoch: [2][3999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.002)	Loss 3.3638e-03 (5.6179e+00)	Acc@1 100.00 ( 43.68)	Acc@5 100.00 ( 88.68)
+22-Jan-26 07:48:14 - Epoch: [2][4999/9000]	Time  0.085 ( 0.077)	Data  0.002 ( 0.002)	Loss 1.9429e+00 (5.6119e+00)	Acc@1   0.00 ( 43.94)	Acc@5 100.00 ( 88.98)
+22-Jan-26 07:49:31 - Epoch: [2][5999/9000]	Time  0.067 ( 0.077)	Data  0.001 ( 0.002)	Loss 2.9961e+00 (5.6497e+00)	Acc@1   0.00 ( 43.98)	Acc@5 100.00 ( 89.20)
+22-Jan-26 07:50:47 - Epoch: [2][6999/9000]	Time  0.083 ( 0.077)	Data  0.001 ( 0.002)	Loss 2.5716e+01 (5.6548e+00)	Acc@1   0.00 ( 43.90)	Acc@5   0.00 ( 89.26)
+22-Jan-26 07:52:05 - Epoch: [2][7999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.002)	Loss 3.9340e-02 (5.6639e+00)	Acc@1 100.00 ( 44.05)	Acc@5 100.00 ( 89.56)
+22-Jan-26 07:53:22 - Epoch: [2][8999/9000]	Time  0.063 ( 0.077)	Data  0.002 ( 0.002)	Loss 1.9502e+01 (5.6220e+00)	Acc@1   0.00 ( 44.53)	Acc@5 100.00 ( 89.72)
+22-Jan-26 07:53:22 -  @Training * Acc@1 44.533 Acc@5 89.722 Loss 5.622
+22-Jan-26 07:53:22 - One training epoch latency: 694.6s | Avg Power: 185.4W | Energy: 128764.9859J
+22-Jan-26 07:53:32 -  @Testing * Acc@1 46.700 Acc@5 91.700 Loss 5.029
+22-Jan-26 07:53:32 - Best acc at epoch 2: 46.70000076293945
+22-Jan-26 07:53:32 - Last learning rate: [1.5625e-05]
+22-Jan-26 07:53:32 - 	 Epoch 3...
+22-Jan-26 07:54:50 - Epoch: [3][ 999/9000]	Time  0.073 ( 0.078)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (5.5119e+00)	Acc@1 100.00 ( 48.20)	Acc@5 100.00 ( 90.80)
+22-Jan-26 07:56:07 - Epoch: [3][1999/9000]	Time  0.077 ( 0.078)	Data  0.001 ( 0.002)	Loss 2.6764e+01 (5.5212e+00)	Acc@1   0.00 ( 46.70)	Acc@5 100.00 ( 90.70)
+22-Jan-26 07:57:25 - Epoch: [3][2999/9000]	Time  0.071 ( 0.078)	Data  0.001 ( 0.001)	Loss 2.8280e+00 (5.4369e+00)	Acc@1   0.00 ( 47.53)	Acc@5 100.00 ( 91.10)
+22-Jan-26 07:58:42 - Epoch: [3][3999/9000]	Time  0.088 ( 0.077)	Data  0.001 ( 0.001)	Loss 3.3379e-06 (5.3472e+00)	Acc@1 100.00 ( 48.23)	Acc@5 100.00 ( 91.48)
+22-Jan-26 08:00:00 - Epoch: [3][4999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.001)	Loss 5.5450e+00 (5.2831e+00)	Acc@1   0.00 ( 48.84)	Acc@5 100.00 ( 91.68)
+22-Jan-26 08:01:17 - Epoch: [3][5999/9000]	Time  0.083 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (5.3699e+00)	Acc@1 100.00 ( 48.92)	Acc@5 100.00 ( 91.67)
+22-Jan-26 08:02:34 - Epoch: [3][6999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.3471e-05 (5.3973e+00)	Acc@1 100.00 ( 49.06)	Acc@5 100.00 ( 91.74)
+22-Jan-26 08:03:52 - Epoch: [3][7999/9000]	Time  0.070 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.8728e-02 (5.3825e+00)	Acc@1 100.00 ( 49.19)	Acc@5 100.00 ( 91.83)
+22-Jan-26 08:05:09 - Epoch: [3][8999/9000]	Time  0.068 ( 0.077)	Data  0.001 ( 0.001)	Loss 4.3404e+00 (5.3783e+00)	Acc@1   0.00 ( 49.72)	Acc@5 100.00 ( 91.77)
+22-Jan-26 08:05:09 -  @Training * Acc@1 49.722 Acc@5 91.767 Loss 5.378
+22-Jan-26 08:05:09 - One training epoch latency: 696.7s | Avg Power: 185.1W | Energy: 128931.7301J
+22-Jan-26 08:05:20 -  @Testing * Acc@1 52.500 Acc@5 92.400 Loss 5.186
+22-Jan-26 08:05:20 - Best acc at epoch 3: 52.500003814697266
+22-Jan-26 08:05:20 - Last learning rate: [1.5625e-05]
+22-Jan-26 08:05:20 - 	 Epoch 4...
+22-Jan-26 08:06:38 - Epoch: [4][ 999/9000]	Time  0.083 ( 0.078)	Data  0.001 ( 0.002)	Loss 6.3378e-02 (4.7301e+00)	Acc@1 100.00 ( 53.10)	Acc@5 100.00 ( 94.90)
+22-Jan-26 08:07:55 - Epoch: [4][1999/9000]	Time  0.072 ( 0.077)	Data  0.002 ( 0.002)	Loss 7.3120e-04 (4.9360e+00)	Acc@1 100.00 ( 53.30)	Acc@5 100.00 ( 94.25)
+22-Jan-26 08:09:12 - Epoch: [4][2999/9000]	Time  0.080 ( 0.077)	Data  0.003 ( 0.002)	Loss 2.4223e+01 (5.0631e+00)	Acc@1   0.00 ( 52.77)	Acc@5   0.00 ( 93.67)
+22-Jan-26 08:10:29 - Epoch: [4][3999/9000]	Time  0.068 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.7084e+01 (5.0793e+00)	Acc@1   0.00 ( 52.83)	Acc@5 100.00 ( 93.65)
+22-Jan-26 08:11:46 - Epoch: [4][4999/9000]	Time  0.076 ( 0.077)	Data  0.002 ( 0.001)	Loss 3.5763e-07 (5.0077e+00)	Acc@1 100.00 ( 53.22)	Acc@5 100.00 ( 93.68)
+22-Jan-26 08:13:04 - Epoch: [4][5999/9000]	Time  0.071 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.9860e+00)	Acc@1 100.00 ( 53.58)	Acc@5 100.00 ( 93.75)
+22-Jan-26 08:14:21 - Epoch: [4][6999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 7.2372e-01 (5.0443e+00)	Acc@1   0.00 ( 53.51)	Acc@5 100.00 ( 93.77)
+22-Jan-26 08:15:38 - Epoch: [4][7999/9000]	Time  0.108 ( 0.077)	Data  0.002 ( 0.001)	Loss 1.4304e-04 (5.0970e+00)	Acc@1 100.00 ( 53.41)	Acc@5 100.00 ( 93.60)
+22-Jan-26 08:16:55 - Epoch: [4][8999/9000]	Time  0.073 ( 0.077)	Data  0.005 ( 0.001)	Loss 2.5255e-01 (5.0820e+00)	Acc@1 100.00 ( 53.53)	Acc@5 100.00 ( 93.69)
+22-Jan-26 08:16:55 -  @Training * Acc@1 53.533 Acc@5 93.689 Loss 5.082
+22-Jan-26 08:16:55 - One training epoch latency: 695.6s | Avg Power: 185.7W | Energy: 129194.7895J
+22-Jan-26 08:17:06 -  @Testing * Acc@1 56.200 Acc@5 93.700 Loss 5.097
+22-Jan-26 08:17:06 - Best acc at epoch 4: 56.20000076293945
+22-Jan-26 08:17:06 - Last learning rate: [1.5625e-05]
+22-Jan-26 08:17:06 - 	 Epoch 5...
+22-Jan-26 08:18:24 - Epoch: [5][ 999/9000]	Time  0.073 ( 0.078)	Data  0.001 ( 0.002)	Loss 7.2285e-03 (4.9787e+00)	Acc@1 100.00 ( 55.60)	Acc@5 100.00 ( 94.10)
+22-Jan-26 08:19:41 - Epoch: [5][1999/9000]	Time  0.077 ( 0.078)	Data  0.002 ( 0.002)	Loss 1.4634e+01 (4.7457e+00)	Acc@1   0.00 ( 56.20)	Acc@5   0.00 ( 94.55)
+22-Jan-26 08:20:59 - Epoch: [5][2999/9000]	Time  0.074 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.5784e+01 (4.6636e+00)	Acc@1   0.00 ( 57.13)	Acc@5   0.00 ( 94.47)
+22-Jan-26 08:22:16 - Epoch: [5][3999/9000]	Time  0.068 ( 0.078)	Data  0.001 ( 0.001)	Loss 2.6470e+01 (4.5652e+00)	Acc@1   0.00 ( 57.70)	Acc@5   0.00 ( 94.75)
+22-Jan-26 08:23:34 - Epoch: [5][4999/9000]	Time  0.070 ( 0.078)	Data  0.001 ( 0.001)	Loss 3.2816e+01 (4.6289e+00)	Acc@1   0.00 ( 57.78)	Acc@5   0.00 ( 94.80)
+22-Jan-26 08:24:52 - Epoch: [5][5999/9000]	Time  0.073 ( 0.078)	Data  0.001 ( 0.001)	Loss 1.5933e+01 (4.6392e+00)	Acc@1   0.00 ( 57.80)	Acc@5 100.00 ( 94.98)
+22-Jan-26 08:26:09 - Epoch: [5][6999/9000]	Time  0.088 ( 0.078)	Data  0.001 ( 0.001)	Loss 6.5518e+00 (4.6656e+00)	Acc@1   0.00 ( 57.69)	Acc@5 100.00 ( 94.81)
+22-Jan-26 08:27:27 - Epoch: [5][7999/9000]	Time  0.077 ( 0.078)	Data  0.002 ( 0.001)	Loss 1.1282e-02 (4.6706e+00)	Acc@1 100.00 ( 57.64)	Acc@5 100.00 ( 94.90)
+22-Jan-26 08:28:44 - Epoch: [5][8999/9000]	Time  0.065 ( 0.078)	Data  0.001 ( 0.001)	Loss 1.5731e+01 (4.6974e+00)	Acc@1   0.00 ( 57.81)	Acc@5 100.00 ( 94.84)
+22-Jan-26 08:28:44 -  @Training * Acc@1 57.811 Acc@5 94.844 Loss 4.697
+22-Jan-26 08:28:44 - One training epoch latency: 698.3s | Avg Power: 185.4W | Energy: 129455.3840J
+22-Jan-26 08:28:55 -  @Testing * Acc@1 52.700 Acc@5 93.800 Loss 6.279
+22-Jan-26 08:28:55 - Best acc at epoch 5: 56.20000076293945
+22-Jan-26 08:28:55 - Last learning rate: [1.5625e-05]
+22-Jan-26 08:28:55 - 	 Epoch 6...
+22-Jan-26 08:30:13 - Epoch: [6][ 999/9000]	Time  0.071 ( 0.078)	Data  0.001 ( 0.002)	Loss 7.1526e-07 (4.7815e+00)	Acc@1 100.00 ( 58.90)	Acc@5 100.00 ( 95.00)
+22-Jan-26 08:31:30 - Epoch: [6][1999/9000]	Time  0.080 ( 0.078)	Data  0.003 ( 0.002)	Loss 0.0000e+00 (4.3825e+00)	Acc@1 100.00 ( 59.40)	Acc@5 100.00 ( 95.90)
+22-Jan-26 08:32:48 - Epoch: [6][2999/9000]	Time  0.071 ( 0.078)	Data  0.001 ( 0.002)	Loss 6.7949e-06 (4.4285e+00)	Acc@1 100.00 ( 60.27)	Acc@5 100.00 ( 95.90)
+22-Jan-26 08:34:05 - Epoch: [6][3999/9000]	Time  0.068 ( 0.078)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (4.4860e+00)	Acc@1 100.00 ( 60.05)	Acc@5 100.00 ( 95.75)
+22-Jan-26 08:35:22 - Epoch: [6][4999/9000]	Time  0.069 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (4.4221e+00)	Acc@1 100.00 ( 60.64)	Acc@5 100.00 ( 95.68)
+22-Jan-26 08:36:40 - Epoch: [6][5999/9000]	Time  0.084 ( 0.077)	Data  0.001 ( 0.002)	Loss 5.7958e+00 (4.4172e+00)	Acc@1   0.00 ( 60.83)	Acc@5 100.00 ( 95.73)
+22-Jan-26 08:37:57 - Epoch: [6][6999/9000]	Time  0.070 ( 0.077)	Data  0.002 ( 0.002)	Loss 0.0000e+00 (4.4365e+00)	Acc@1 100.00 ( 60.70)	Acc@5 100.00 ( 95.80)
+22-Jan-26 08:39:14 - Epoch: [6][7999/9000]	Time  0.070 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.1921e-07 (4.4069e+00)	Acc@1 100.00 ( 60.83)	Acc@5 100.00 ( 95.83)
+22-Jan-26 08:40:31 - Epoch: [6][8999/9000]	Time  0.057 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.3350e-03 (4.3959e+00)	Acc@1 100.00 ( 61.11)	Acc@5 100.00 ( 95.84)
+22-Jan-26 08:40:31 -  @Training * Acc@1 61.111 Acc@5 95.844 Loss 4.396
+22-Jan-26 08:40:31 - One training epoch latency: 696.3s | Avg Power: 185.3W | Energy: 129040.1979J
+22-Jan-26 08:40:42 -  @Testing * Acc@1 57.800 Acc@5 94.600 Loss 5.529
+22-Jan-26 08:40:42 - Best acc at epoch 6: 57.80000305175781
+22-Jan-26 08:40:42 - Last learning rate: [1.5625e-05]
+22-Jan-26 08:40:42 - 	 Epoch 7...
+22-Jan-26 08:42:00 - Epoch: [7][ 999/9000]	Time  0.086 ( 0.078)	Data  0.003 ( 0.002)	Loss 1.0729e-06 (3.9255e+00)	Acc@1 100.00 ( 62.20)	Acc@5 100.00 ( 96.60)
+22-Jan-26 08:43:17 - Epoch: [7][1999/9000]	Time  0.068 ( 0.078)	Data  0.001 ( 0.002)	Loss 2.3842e-07 (4.0503e+00)	Acc@1 100.00 ( 62.95)	Acc@5 100.00 ( 96.80)
+22-Jan-26 08:44:35 - Epoch: [7][2999/9000]	Time  0.080 ( 0.078)	Data  0.001 ( 0.002)	Loss 2.9802e-06 (3.9797e+00)	Acc@1 100.00 ( 62.93)	Acc@5 100.00 ( 97.00)
+22-Jan-26 08:45:52 - Epoch: [7][3999/9000]	Time  0.079 ( 0.078)	Data  0.002 ( 0.002)	Loss 3.0332e+00 (3.9943e+00)	Acc@1   0.00 ( 63.08)	Acc@5 100.00 ( 97.03)
+22-Jan-26 08:47:09 - Epoch: [7][4999/9000]	Time  0.069 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.4877e+00 (4.0039e+00)	Acc@1   0.00 ( 63.52)	Acc@5 100.00 ( 96.90)
+22-Jan-26 08:48:27 - Epoch: [7][5999/9000]	Time  0.078 ( 0.078)	Data  0.002 ( 0.002)	Loss 1.2104e+01 (4.0378e+00)	Acc@1   0.00 ( 63.37)	Acc@5 100.00 ( 96.92)
+22-Jan-26 08:49:45 - Epoch: [7][6999/9000]	Time  0.073 ( 0.078)	Data  0.001 ( 0.002)	Loss 7.9241e+00 (4.0583e+00)	Acc@1   0.00 ( 63.54)	Acc@5 100.00 ( 96.71)
+22-Jan-26 08:51:02 - Epoch: [7][7999/9000]	Time  0.069 ( 0.078)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.1093e+00)	Acc@1 100.00 ( 63.38)	Acc@5 100.00 ( 96.51)
+22-Jan-26 08:52:19 - Epoch: [7][8999/9000]	Time  0.058 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.1921e-07 (4.0959e+00)	Acc@1 100.00 ( 63.71)	Acc@5 100.00 ( 96.56)
+22-Jan-26 08:52:19 -  @Training * Acc@1 63.711 Acc@5 96.556 Loss 4.096
+22-Jan-26 08:52:19 - One training epoch latency: 697.6s | Avg Power: 184.9W | Energy: 128971.1627J
+22-Jan-26 08:52:30 -  @Testing * Acc@1 63.000 Acc@5 95.900 Loss 4.803
+22-Jan-26 08:52:30 - Best acc at epoch 7: 63.000003814697266
+22-Jan-26 08:52:30 - Last learning rate: [1.5625e-05]
+22-Jan-26 08:52:30 - 	 Epoch 8...
+22-Jan-26 08:53:48 - Epoch: [8][ 999/9000]	Time  0.069 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.1921e-06 (3.5499e+00)	Acc@1 100.00 ( 67.00)	Acc@5 100.00 ( 97.20)
+22-Jan-26 08:55:05 - Epoch: [8][1999/9000]	Time  0.066 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.3610e+00 (3.7489e+00)	Acc@1   0.00 ( 67.00)	Acc@5 100.00 ( 96.55)
+22-Jan-26 08:56:23 - Epoch: [8][2999/9000]	Time  0.079 ( 0.078)	Data  0.001 ( 0.002)	Loss 7.6294e-06 (3.8356e+00)	Acc@1 100.00 ( 66.47)	Acc@5 100.00 ( 96.73)
+22-Jan-26 08:57:40 - Epoch: [8][3999/9000]	Time  0.069 ( 0.078)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.8239e+00)	Acc@1 100.00 ( 66.30)	Acc@5 100.00 ( 96.93)
+22-Jan-26 08:58:57 - Epoch: [8][4999/9000]	Time  0.075 ( 0.078)	Data  0.001 ( 0.002)	Loss 2.2157e+01 (3.8344e+00)	Acc@1   0.00 ( 66.14)	Acc@5 100.00 ( 96.88)
+22-Jan-26 09:00:15 - Epoch: [8][5999/9000]	Time  0.076 ( 0.078)	Data  0.002 ( 0.002)	Loss 3.3668e+01 (3.7963e+00)	Acc@1   0.00 ( 66.57)	Acc@5 100.00 ( 96.95)
+22-Jan-26 09:01:32 - Epoch: [8][6999/9000]	Time  0.080 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.7746e+00)	Acc@1 100.00 ( 66.73)	Acc@5 100.00 ( 97.06)
+22-Jan-26 09:02:49 - Epoch: [8][7999/9000]	Time  0.075 ( 0.077)	Data  0.001 ( 0.002)	Loss 7.9521e-03 (3.8535e+00)	Acc@1 100.00 ( 66.49)	Acc@5 100.00 ( 96.98)
+22-Jan-26 09:04:07 - Epoch: [8][8999/9000]	Time  0.061 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.7106e+01 (3.8877e+00)	Acc@1   0.00 ( 66.41)	Acc@5 100.00 ( 96.98)
+22-Jan-26 09:04:07 -  @Training * Acc@1 66.411 Acc@5 96.978 Loss 3.888
+22-Jan-26 09:04:07 - One training epoch latency: 697.1s | Avg Power: 185.3W | Energy: 129173.7027J
+22-Jan-26 09:04:17 -  @Testing * Acc@1 63.400 Acc@5 96.200 Loss 4.389
+22-Jan-26 09:04:17 - Best acc at epoch 8: 63.400001525878906
+22-Jan-26 09:04:17 - Last learning rate: [1.5625e-05]
+22-Jan-26 09:04:17 - 	 Epoch 9...
+22-Jan-26 09:05:35 - Epoch: [9][ 999/9000]	Time  0.071 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.2792e+00)	Acc@1 100.00 ( 70.30)	Acc@5 100.00 ( 97.10)
+22-Jan-26 09:06:52 - Epoch: [9][1999/9000]	Time  0.067 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.2994e-05 (3.3247e+00)	Acc@1 100.00 ( 69.85)	Acc@5 100.00 ( 97.30)
+22-Jan-26 09:08:09 - Epoch: [9][2999/9000]	Time  0.076 ( 0.077)	Data  0.002 ( 0.001)	Loss 9.5202e+00 (3.3663e+00)	Acc@1   0.00 ( 70.30)	Acc@5 100.00 ( 97.33)
+22-Jan-26 09:09:26 - Epoch: [9][3999/9000]	Time  0.078 ( 0.077)	Data  0.001 ( 0.001)	Loss 5.1260e-06 (3.4935e+00)	Acc@1 100.00 ( 69.45)	Acc@5 100.00 ( 97.48)
+22-Jan-26 09:10:43 - Epoch: [9][4999/9000]	Time  0.079 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.5808e+00)	Acc@1 100.00 ( 68.70)	Acc@5 100.00 ( 97.32)
+22-Jan-26 09:12:00 - Epoch: [9][5999/9000]	Time  0.075 ( 0.077)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (3.6020e+00)	Acc@1 100.00 ( 68.57)	Acc@5 100.00 ( 97.33)
+22-Jan-26 09:13:17 - Epoch: [9][6999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 5.3776e+00 (3.5894e+00)	Acc@1   0.00 ( 68.77)	Acc@5 100.00 ( 97.41)
+22-Jan-26 09:14:35 - Epoch: [9][7999/9000]	Time  0.076 ( 0.077)	Data  0.001 ( 0.001)	Loss 4.3114e-02 (3.6302e+00)	Acc@1 100.00 ( 68.71)	Acc@5 100.00 ( 97.33)
+22-Jan-26 09:15:53 - Epoch: [9][8999/9000]	Time  0.076 ( 0.077)	Data  0.001 ( 0.001)	Loss 2.8944e+00 (3.5607e+00)	Acc@1   0.00 ( 69.04)	Acc@5 100.00 ( 97.36)
+22-Jan-26 09:15:53 -  @Training * Acc@1 69.044 Acc@5 97.356 Loss 3.561
+22-Jan-26 09:15:53 - One training epoch latency: 695.5s | Avg Power: 185.4W | Energy: 128918.3745J
+22-Jan-26 09:16:03 -  @Testing * Acc@1 65.600 Acc@5 96.300 Loss 4.645
+22-Jan-26 09:16:03 - Best acc at epoch 9: 65.60000610351562
+22-Jan-26 09:16:03 - Last learning rate: [1.5625e-05]
+22-Jan-26 09:16:03 - 	 Epoch 10...
+22-Jan-26 09:17:21 - Epoch: [10][ 999/9000]	Time  0.078 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.7674e+01 (3.4090e+00)	Acc@1   0.00 ( 72.00)	Acc@5 100.00 ( 98.00)
+22-Jan-26 09:18:38 - Epoch: [10][1999/9000]	Time  0.070 ( 0.078)	Data  0.001 ( 0.002)	Loss 8.7254e+00 (3.3803e+00)	Acc@1   0.00 ( 71.40)	Acc@5 100.00 ( 97.85)
+22-Jan-26 09:19:55 - Epoch: [10][2999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.002)	Loss 5.8471e+00 (3.3229e+00)	Acc@1   0.00 ( 71.63)	Acc@5 100.00 ( 98.00)
+22-Jan-26 09:21:13 - Epoch: [10][3999/9000]	Time  0.071 ( 0.078)	Data  0.001 ( 0.002)	Loss 1.7011e+01 (3.3654e+00)	Acc@1   0.00 ( 71.58)	Acc@5 100.00 ( 97.95)
+22-Jan-26 09:22:30 - Epoch: [10][4999/9000]	Time  0.079 ( 0.077)	Data  0.002 ( 0.002)	Loss 0.0000e+00 (3.3684e+00)	Acc@1 100.00 ( 71.60)	Acc@5 100.00 ( 97.92)
+22-Jan-26 09:23:47 - Epoch: [10][5999/9000]	Time  0.075 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.4405e+00 (3.3335e+00)	Acc@1   0.00 ( 71.57)	Acc@5 100.00 ( 97.95)
+22-Jan-26 09:25:04 - Epoch: [10][6999/9000]	Time  0.082 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.3730e+00)	Acc@1 100.00 ( 71.20)	Acc@5 100.00 ( 97.94)
+22-Jan-26 09:26:22 - Epoch: [10][7999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.3620e+00)	Acc@1 100.00 ( 71.26)	Acc@5 100.00 ( 97.93)
+22-Jan-26 09:27:40 - Epoch: [10][8999/9000]	Time  0.073 ( 0.077)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (3.4005e+00)	Acc@1 100.00 ( 70.98)	Acc@5 100.00 ( 97.88)
+22-Jan-26 09:27:40 -  @Training * Acc@1 70.978 Acc@5 97.878 Loss 3.401
+22-Jan-26 09:27:40 - One training epoch latency: 697.1s | Avg Power: 185.2W | Energy: 129142.6619J
+22-Jan-26 09:27:50 -  @Testing * Acc@1 66.700 Acc@5 96.300 Loss 4.538
+22-Jan-26 09:27:50 - Best acc at epoch 10: 66.70000457763672
+22-Jan-26 09:27:50 - Last learning rate: [1.5625e-05]
+22-Jan-26 09:27:50 - 	 Epoch 11...
+22-Jan-26 09:29:08 - Epoch: [11][ 999/9000]	Time  0.075 ( 0.078)	Data  0.003 ( 0.002)	Loss 1.3553e-04 (2.8163e+00)	Acc@1 100.00 ( 72.50)	Acc@5 100.00 ( 98.20)
+22-Jan-26 09:30:25 - Epoch: [11][1999/9000]	Time  0.069 ( 0.078)	Data  0.001 ( 0.002)	Loss 3.1398e+00 (2.9615e+00)	Acc@1   0.00 ( 73.05)	Acc@5 100.00 ( 98.05)
+22-Jan-26 09:31:42 - Epoch: [11][2999/9000]	Time  0.082 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.0249e+00)	Acc@1 100.00 ( 73.43)	Acc@5 100.00 ( 98.00)
+22-Jan-26 09:33:00 - Epoch: [11][3999/9000]	Time  0.071 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.1127e+00)	Acc@1 100.00 ( 73.38)	Acc@5 100.00 ( 97.90)
+22-Jan-26 09:34:17 - Epoch: [11][4999/9000]	Time  0.076 ( 0.077)	Data  0.001 ( 0.001)	Loss 4.8581e+00 (3.1681e+00)	Acc@1   0.00 ( 73.28)	Acc@5 100.00 ( 98.00)
+22-Jan-26 09:35:34 - Epoch: [11][5999/9000]	Time  0.078 ( 0.077)	Data  0.003 ( 0.001)	Loss 1.4729e+00 (3.0925e+00)	Acc@1   0.00 ( 73.13)	Acc@5 100.00 ( 98.18)
+22-Jan-26 09:36:51 - Epoch: [11][6999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.0971e+00)	Acc@1 100.00 ( 73.01)	Acc@5 100.00 ( 98.20)
+22-Jan-26 09:38:08 - Epoch: [11][7999/9000]	Time  0.069 ( 0.077)	Data  0.001 ( 0.001)	Loss 2.3376e+00 (3.1440e+00)	Acc@1   0.00 ( 73.09)	Acc@5 100.00 ( 98.15)
+22-Jan-26 09:39:25 - Epoch: [11][8999/9000]	Time  0.070 ( 0.077)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (3.1853e+00)	Acc@1 100.00 ( 72.79)	Acc@5 100.00 ( 98.12)
+22-Jan-26 09:39:25 -  @Training * Acc@1 72.789 Acc@5 98.122 Loss 3.185
+22-Jan-26 09:39:25 - One training epoch latency: 695.0s | Avg Power: 185.7W | Energy: 129077.0058J
+22-Jan-26 09:39:35 -  @Testing * Acc@1 68.300 Acc@5 97.000 Loss 4.133
+22-Jan-26 09:39:35 - Best acc at epoch 11: 68.30000305175781
+22-Jan-26 09:39:35 - Last learning rate: [1.5625e-05]
+22-Jan-26 09:39:35 - 	 Epoch 12...
+22-Jan-26 09:40:53 - Epoch: [12][ 999/9000]	Time  0.088 ( 0.077)	Data  0.001 ( 0.002)	Loss 8.8921e-02 (2.5817e+00)	Acc@1 100.00 ( 76.80)	Acc@5 100.00 ( 98.70)
+22-Jan-26 09:42:10 - Epoch: [12][1999/9000]	Time  0.084 ( 0.077)	Data  0.002 ( 0.002)	Loss 3.2962e+00 (2.6807e+00)	Acc@1   0.00 ( 76.15)	Acc@5 100.00 ( 98.60)
+22-Jan-26 09:43:27 - Epoch: [12][2999/9000]	Time  0.079 ( 0.077)	Data  0.002 ( 0.002)	Loss 4.6729e-05 (2.6811e+00)	Acc@1 100.00 ( 76.30)	Acc@5 100.00 ( 98.57)
+22-Jan-26 09:44:45 - Epoch: [12][3999/9000]	Time  0.076 ( 0.077)	Data  0.002 ( 0.002)	Loss 0.0000e+00 (2.7769e+00)	Acc@1 100.00 ( 75.85)	Acc@5 100.00 ( 98.30)
+22-Jan-26 09:46:02 - Epoch: [12][4999/9000]	Time  0.085 ( 0.077)	Data  0.002 ( 0.002)	Loss 3.5763e-07 (2.7971e+00)	Acc@1 100.00 ( 76.02)	Acc@5 100.00 ( 98.32)
+22-Jan-26 09:47:20 - Epoch: [12][5999/9000]	Time  0.109 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.7806e+00)	Acc@1 100.00 ( 76.22)	Acc@5 100.00 ( 98.38)
+22-Jan-26 09:48:37 - Epoch: [12][6999/9000]	Time  0.074 ( 0.077)	Data  0.002 ( 0.001)	Loss 8.5853e-04 (2.8668e+00)	Acc@1 100.00 ( 75.84)	Acc@5 100.00 ( 98.41)
+22-Jan-26 09:49:54 - Epoch: [12][7999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.8795e+00)	Acc@1 100.00 ( 75.68)	Acc@5 100.00 ( 98.38)
+22-Jan-26 09:51:11 - Epoch: [12][8999/9000]	Time  0.067 ( 0.077)	Data  0.001 ( 0.001)	Loss 2.7338e-03 (2.9139e+00)	Acc@1 100.00 ( 75.44)	Acc@5 100.00 ( 98.29)
+22-Jan-26 09:51:11 -  @Training * Acc@1 75.444 Acc@5 98.289 Loss 2.914
+22-Jan-26 09:51:11 - One training epoch latency: 695.5s | Avg Power: 185.4W | Energy: 128926.7788J
+22-Jan-26 09:51:22 -  @Testing * Acc@1 69.900 Acc@5 96.600 Loss 4.454
+22-Jan-26 09:51:22 - Best acc at epoch 12: 69.9000015258789
+22-Jan-26 09:51:22 - Last learning rate: [1.5625e-05]
+22-Jan-26 09:51:22 - 	 Epoch 13...
+22-Jan-26 09:52:39 - Epoch: [13][ 999/9000]	Time  0.075 ( 0.077)	Data  0.003 ( 0.002)	Loss 8.3644e+00 (2.6922e+00)	Acc@1   0.00 ( 77.80)	Acc@5 100.00 ( 99.00)
+22-Jan-26 09:53:57 - Epoch: [13][1999/9000]	Time  0.078 ( 0.078)	Data  0.002 ( 0.002)	Loss 0.0000e+00 (2.5882e+00)	Acc@1 100.00 ( 77.90)	Acc@5 100.00 ( 99.05)
+22-Jan-26 09:55:16 - Epoch: [13][2999/9000]	Time  0.075 ( 0.078)	Data  0.002 ( 0.002)	Loss 0.0000e+00 (2.7435e+00)	Acc@1 100.00 ( 76.97)	Acc@5 100.00 ( 98.80)
+22-Jan-26 09:56:33 - Epoch: [13][3999/9000]	Time  0.083 ( 0.078)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (2.7485e+00)	Acc@1 100.00 ( 76.53)	Acc@5 100.00 ( 98.68)
+22-Jan-26 09:57:50 - Epoch: [13][4999/9000]	Time  0.068 ( 0.078)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (2.7685e+00)	Acc@1 100.00 ( 76.34)	Acc@5 100.00 ( 98.80)
+22-Jan-26 09:59:08 - Epoch: [13][5999/9000]	Time  0.073 ( 0.078)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (2.7541e+00)	Acc@1 100.00 ( 76.57)	Acc@5 100.00 ( 98.77)
+22-Jan-26 10:00:25 - Epoch: [13][6999/9000]	Time  0.074 ( 0.078)	Data  0.003 ( 0.002)	Loss 0.0000e+00 (2.7944e+00)	Acc@1 100.00 ( 76.26)	Acc@5 100.00 ( 98.71)
+22-Jan-26 10:01:42 - Epoch: [13][7999/9000]	Time  0.083 ( 0.078)	Data  0.001 ( 0.002)	Loss 9.5367e-07 (2.7767e+00)	Acc@1 100.00 ( 76.26)	Acc@5 100.00 ( 98.78)
+22-Jan-26 10:03:00 - Epoch: [13][8999/9000]	Time  0.072 ( 0.078)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (2.7583e+00)	Acc@1 100.00 ( 76.46)	Acc@5 100.00 ( 98.74)
+22-Jan-26 10:03:00 -  @Training * Acc@1 76.456 Acc@5 98.744 Loss 2.758
+22-Jan-26 10:03:00 - One training epoch latency: 698.1s | Avg Power: 184.7W | Energy: 128940.4839J
+22-Jan-26 10:03:10 -  @Testing * Acc@1 68.900 Acc@5 96.700 Loss 4.743
+22-Jan-26 10:03:10 - Best acc at epoch 13: 69.9000015258789
+22-Jan-26 10:03:10 - Last learning rate: [1.5625e-05]
+22-Jan-26 10:03:10 - 	 Epoch 14...
+22-Jan-26 10:04:28 - Epoch: [14][ 999/9000]	Time  0.070 ( 0.077)	Data  0.002 ( 0.002)	Loss 1.0620e+00 (2.3495e+00)	Acc@1   0.00 ( 79.30)	Acc@5 100.00 ( 99.40)
+22-Jan-26 10:05:45 - Epoch: [14][1999/9000]	Time  0.078 ( 0.077)	Data  0.001 ( 0.002)	Loss 4.3087e-01 (2.3227e+00)	Acc@1 100.00 ( 79.35)	Acc@5 100.00 ( 99.25)
+22-Jan-26 10:07:01 - Epoch: [14][2999/9000]	Time  0.083 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.1921e-07 (2.3102e+00)	Acc@1 100.00 ( 79.10)	Acc@5 100.00 ( 99.33)
+22-Jan-26 10:08:18 - Epoch: [14][3999/9000]	Time  0.069 ( 0.077)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (2.3271e+00)	Acc@1 100.00 ( 78.75)	Acc@5 100.00 ( 99.43)
+22-Jan-26 10:09:35 - Epoch: [14][4999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 4.0182e-03 (2.4004e+00)	Acc@1 100.00 ( 78.42)	Acc@5 100.00 ( 99.24)
+22-Jan-26 10:10:51 - Epoch: [14][5999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.001)	Loss 7.1526e-07 (2.4350e+00)	Acc@1 100.00 ( 78.13)	Acc@5 100.00 ( 99.17)
+22-Jan-26 10:12:07 - Epoch: [14][6999/9000]	Time  0.075 ( 0.077)	Data  0.002 ( 0.001)	Loss 9.6537e+00 (2.4628e+00)	Acc@1   0.00 ( 77.90)	Acc@5 100.00 ( 99.09)
+22-Jan-26 10:13:23 - Epoch: [14][7999/9000]	Time  0.090 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.4864e+00)	Acc@1 100.00 ( 77.84)	Acc@5 100.00 ( 99.11)
+22-Jan-26 10:14:40 - Epoch: [14][8999/9000]	Time  0.064 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.4995e+00)	Acc@1 100.00 ( 77.57)	Acc@5 100.00 ( 99.04)
+22-Jan-26 10:14:40 -  @Training * Acc@1 77.567 Acc@5 99.044 Loss 2.500
+22-Jan-26 10:14:40 - One training epoch latency: 689.9s | Avg Power: 185.9W | Energy: 128262.2873J
+22-Jan-26 10:14:51 -  @Testing * Acc@1 68.400 Acc@5 97.000 Loss 4.778
+22-Jan-26 10:14:51 - Best acc at epoch 14: 69.9000015258789
+22-Jan-26 10:14:51 - Last learning rate: [1.5625e-05]
+22-Jan-26 10:14:51 - 	 Epoch 15...
+22-Jan-26 10:16:08 - Epoch: [15][ 999/9000]	Time  0.067 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.0729e-06 (2.0193e+00)	Acc@1 100.00 ( 80.40)	Acc@5 100.00 ( 99.60)
+22-Jan-26 10:17:25 - Epoch: [15][1999/9000]	Time  0.070 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (2.0147e+00)	Acc@1 100.00 ( 80.05)	Acc@5 100.00 ( 99.55)
+22-Jan-26 10:18:41 - Epoch: [15][2999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.001)	Loss 2.5293e-04 (2.0672e+00)	Acc@1 100.00 ( 80.00)	Acc@5 100.00 ( 99.40)
+22-Jan-26 10:19:57 - Epoch: [15][3999/9000]	Time  0.070 ( 0.077)	Data  0.001 ( 0.001)	Loss 4.9174e-04 (2.0858e+00)	Acc@1 100.00 ( 80.15)	Acc@5 100.00 ( 99.35)
+22-Jan-26 10:21:14 - Epoch: [15][4999/9000]	Time  0.078 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.8084e-02 (2.1609e+00)	Acc@1 100.00 ( 79.96)	Acc@5 100.00 ( 99.32)
+22-Jan-26 10:22:30 - Epoch: [15][5999/9000]	Time  0.070 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.1742e+00)	Acc@1 100.00 ( 80.15)	Acc@5 100.00 ( 99.33)
+22-Jan-26 10:23:46 - Epoch: [15][6999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.001)	Loss 2.6854e-04 (2.2384e+00)	Acc@1 100.00 ( 79.86)	Acc@5 100.00 ( 99.24)
+22-Jan-26 10:25:03 - Epoch: [15][7999/9000]	Time  0.071 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.7248e-04 (2.2788e+00)	Acc@1 100.00 ( 79.54)	Acc@5 100.00 ( 99.19)
+22-Jan-26 10:26:20 - Epoch: [15][8999/9000]	Time  0.064 ( 0.077)	Data  0.001 ( 0.001)	Loss 3.5763e-07 (2.2864e+00)	Acc@1 100.00 ( 79.59)	Acc@5 100.00 ( 99.19)
+22-Jan-26 10:26:20 -  @Training * Acc@1 79.589 Acc@5 99.189 Loss 2.286
+22-Jan-26 10:26:20 - One training epoch latency: 689.4s | Avg Power: 185.7W | Energy: 128022.1228J
+22-Jan-26 10:26:31 -  @Testing * Acc@1 68.500 Acc@5 96.900 Loss 5.035
+22-Jan-26 10:26:31 - Best acc at epoch 15: 69.9000015258789
+22-Jan-26 10:26:31 - Last learning rate: [1.5625e-05]
+22-Jan-26 10:26:31 - 	 Epoch 16...
+22-Jan-26 10:27:48 - Epoch: [16][ 999/9000]	Time  0.082 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (1.9948e+00)	Acc@1 100.00 ( 81.50)	Acc@5 100.00 ( 99.20)
+22-Jan-26 10:29:04 - Epoch: [16][1999/9000]	Time  0.079 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.4305e-06 (1.8571e+00)	Acc@1 100.00 ( 82.25)	Acc@5 100.00 ( 99.40)
+22-Jan-26 10:30:21 - Epoch: [16][2999/9000]	Time  0.068 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.9809e+00)	Acc@1 100.00 ( 82.40)	Acc@5 100.00 ( 99.33)
+22-Jan-26 10:31:37 - Epoch: [16][3999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 6.1942e-03 (2.0333e+00)	Acc@1 100.00 ( 81.73)	Acc@5 100.00 ( 99.25)
+22-Jan-26 10:32:53 - Epoch: [16][4999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.1921e-07 (2.0743e+00)	Acc@1 100.00 ( 81.26)	Acc@5 100.00 ( 99.26)
+22-Jan-26 10:34:10 - Epoch: [16][5999/9000]	Time  0.077 ( 0.077)	Data  0.005 ( 0.001)	Loss 1.5985e-04 (2.0939e+00)	Acc@1 100.00 ( 81.22)	Acc@5 100.00 ( 99.22)
+22-Jan-26 10:35:27 - Epoch: [16][6999/9000]	Time  0.091 ( 0.077)	Data  0.001 ( 0.001)	Loss 2.3842e-07 (2.1090e+00)	Acc@1 100.00 ( 81.11)	Acc@5 100.00 ( 99.23)
+22-Jan-26 10:36:44 - Epoch: [16][7999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.6339e+01 (2.1459e+00)	Acc@1   0.00 ( 81.05)	Acc@5 100.00 ( 99.26)
+22-Jan-26 10:38:01 - Epoch: [16][8999/9000]	Time  0.085 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.2405e-01 (2.1561e+00)	Acc@1 100.00 ( 81.21)	Acc@5 100.00 ( 99.22)
+22-Jan-26 10:38:02 -  @Training * Acc@1 81.211 Acc@5 99.222 Loss 2.156
+22-Jan-26 10:38:02 - One training epoch latency: 690.9s | Avg Power: 185.7W | Energy: 128326.5925J
+22-Jan-26 10:38:12 -  @Testing * Acc@1 70.800 Acc@5 97.600 Loss 4.547
+22-Jan-26 10:38:12 - Best acc at epoch 16: 70.80000305175781
+22-Jan-26 10:38:12 - Last learning rate: [1.5625e-05]
+22-Jan-26 10:38:12 - 	 Epoch 17...
+22-Jan-26 10:39:29 - Epoch: [17][ 999/9000]	Time  0.086 ( 0.077)	Data  0.009 ( 0.002)	Loss 1.1921e-07 (1.5291e+00)	Acc@1 100.00 ( 85.50)	Acc@5 100.00 ( 99.60)
+22-Jan-26 10:40:45 - Epoch: [17][1999/9000]	Time  0.069 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.0729e-06 (1.6917e+00)	Acc@1 100.00 ( 84.10)	Acc@5 100.00 ( 99.50)
+22-Jan-26 10:42:01 - Epoch: [17][2999/9000]	Time  0.071 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7743e+00)	Acc@1 100.00 ( 83.63)	Acc@5 100.00 ( 99.33)
+22-Jan-26 10:43:18 - Epoch: [17][3999/9000]	Time  0.071 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7523e+00)	Acc@1 100.00 ( 83.55)	Acc@5 100.00 ( 99.38)
+22-Jan-26 10:44:34 - Epoch: [17][4999/9000]	Time  0.067 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.1284e-03 (1.8076e+00)	Acc@1 100.00 ( 83.34)	Acc@5 100.00 ( 99.40)
+22-Jan-26 10:45:50 - Epoch: [17][5999/9000]	Time  0.075 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.8584e+00)	Acc@1 100.00 ( 83.20)	Acc@5 100.00 ( 99.42)
+22-Jan-26 10:47:07 - Epoch: [17][6999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.8892e+00)	Acc@1 100.00 ( 82.93)	Acc@5 100.00 ( 99.40)
+22-Jan-26 10:48:23 - Epoch: [17][7999/9000]	Time  0.078 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.9314e+00)	Acc@1 100.00 ( 82.54)	Acc@5 100.00 ( 99.38)
+22-Jan-26 10:49:39 - Epoch: [17][8999/9000]	Time  0.060 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.9577e+00)	Acc@1 100.00 ( 82.39)	Acc@5 100.00 ( 99.37)
+22-Jan-26 10:49:39 -  @Training * Acc@1 82.389 Acc@5 99.367 Loss 1.958
+22-Jan-26 10:49:40 - One training epoch latency: 687.7s | Avg Power: 186.3W | Energy: 128086.6718J
+22-Jan-26 10:49:50 -  @Testing * Acc@1 71.500 Acc@5 97.500 Loss 4.626
+22-Jan-26 10:49:50 - Best acc at epoch 17: 71.5
+22-Jan-26 10:49:50 - Last learning rate: [7.8125e-06]
+22-Jan-26 10:49:50 - 	 Epoch 18...
+22-Jan-26 10:51:06 - Epoch: [18][ 999/9000]	Time  0.081 ( 0.076)	Data  0.002 ( 0.002)	Loss 7.1526e-07 (9.2109e-01)	Acc@1 100.00 ( 88.90)	Acc@5 100.00 ( 99.80)
+22-Jan-26 10:52:23 - Epoch: [18][1999/9000]	Time  0.081 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.0547e+00)	Acc@1 100.00 ( 88.25)	Acc@5 100.00 ( 99.70)
+22-Jan-26 10:53:40 - Epoch: [18][2999/9000]	Time  0.081 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.0205e+00)	Acc@1 100.00 ( 88.70)	Acc@5 100.00 ( 99.80)
+22-Jan-26 10:54:56 - Epoch: [18][3999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.0879e+00)	Acc@1 100.00 ( 88.58)	Acc@5 100.00 ( 99.78)
+22-Jan-26 10:56:12 - Epoch: [18][4999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.1126e+00)	Acc@1 100.00 ( 88.50)	Acc@5 100.00 ( 99.80)
+22-Jan-26 10:57:29 - Epoch: [18][5999/9000]	Time  0.066 ( 0.076)	Data  0.001 ( 0.001)	Loss 7.3909e-06 (1.1150e+00)	Acc@1 100.00 ( 88.43)	Acc@5 100.00 ( 99.75)
+22-Jan-26 10:58:45 - Epoch: [18][6999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.1466e+00)	Acc@1 100.00 ( 88.29)	Acc@5 100.00 ( 99.71)
+22-Jan-26 11:00:02 - Epoch: [18][7999/9000]	Time  0.073 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.1562e+00)	Acc@1 100.00 ( 88.19)	Acc@5 100.00 ( 99.71)
+22-Jan-26 11:01:18 - Epoch: [18][8999/9000]	Time  0.064 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.1462e+00)	Acc@1 100.00 ( 88.09)	Acc@5 100.00 ( 99.72)
+22-Jan-26 11:01:18 -  @Training * Acc@1 88.089 Acc@5 99.722 Loss 1.146
+22-Jan-26 11:01:18 - One training epoch latency: 688.0s | Avg Power: 186.0W | Energy: 127982.2207J
+22-Jan-26 11:01:28 -  @Testing * Acc@1 72.600 Acc@5 97.900 Loss 4.374
+22-Jan-26 11:01:28 - Best acc at epoch 18: 72.60000610351562
+22-Jan-26 11:01:29 - Last learning rate: [7.8125e-06]
+22-Jan-26 11:01:29 - 	 Epoch 19...
+22-Jan-26 11:02:45 - Epoch: [19][ 999/9000]	Time  0.069 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.8746e-01)	Acc@1 100.00 ( 89.90)	Acc@5 100.00 ( 99.80)
+22-Jan-26 11:04:01 - Epoch: [19][1999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 4.1723e-06 (9.0289e-01)	Acc@1 100.00 ( 90.35)	Acc@5 100.00 ( 99.85)
+22-Jan-26 11:05:18 - Epoch: [19][2999/9000]	Time  0.081 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.7148e-01)	Acc@1 100.00 ( 90.40)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:06:34 - Epoch: [19][3999/9000]	Time  0.074 ( 0.076)	Data  0.002 ( 0.001)	Loss 9.5367e-07 (9.3139e-01)	Acc@1 100.00 ( 89.55)	Acc@5 100.00 ( 99.88)
+22-Jan-26 11:07:51 - Epoch: [19][4999/9000]	Time  0.071 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.0009e+00)	Acc@1 100.00 ( 89.14)	Acc@5 100.00 ( 99.86)
+22-Jan-26 11:09:07 - Epoch: [19][5999/9000]	Time  0.076 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (1.0093e+00)	Acc@1 100.00 ( 89.25)	Acc@5 100.00 ( 99.83)
+22-Jan-26 11:10:23 - Epoch: [19][6999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.0171e+00)	Acc@1 100.00 ( 89.07)	Acc@5 100.00 ( 99.84)
+22-Jan-26 11:11:40 - Epoch: [19][7999/9000]	Time  0.080 ( 0.076)	Data  0.003 ( 0.001)	Loss 0.0000e+00 (1.0276e+00)	Acc@1 100.00 ( 88.94)	Acc@5 100.00 ( 99.83)
+22-Jan-26 11:12:56 - Epoch: [19][8999/9000]	Time  0.066 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.0240e+00)	Acc@1 100.00 ( 88.82)	Acc@5 100.00 ( 99.82)
+22-Jan-26 11:12:56 -  @Training * Acc@1 88.822 Acc@5 99.822 Loss 1.024
+22-Jan-26 11:12:56 - One training epoch latency: 687.8s | Avg Power: 185.8W | Energy: 127803.9108J
+22-Jan-26 11:13:06 -  @Testing * Acc@1 71.700 Acc@5 97.600 Loss 4.716
+22-Jan-26 11:13:06 - Best acc at epoch 19: 72.60000610351562
+22-Jan-26 11:13:07 - Last learning rate: [7.8125e-06]
+22-Jan-26 11:13:07 - 	 Epoch 20...
+22-Jan-26 11:14:23 - Epoch: [20][ 999/9000]	Time  0.072 ( 0.077)	Data  0.002 ( 0.002)	Loss 2.5448e-04 (9.0502e-01)	Acc@1 100.00 ( 90.40)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:15:40 - Epoch: [20][1999/9000]	Time  0.083 ( 0.077)	Data  0.006 ( 0.002)	Loss 0.0000e+00 (8.0680e-01)	Acc@1 100.00 ( 90.40)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:16:56 - Epoch: [20][2999/9000]	Time  0.070 ( 0.077)	Data  0.001 ( 0.002)	Loss 1.8958e+00 (8.2505e-01)	Acc@1   0.00 ( 90.33)	Acc@5 100.00 ( 99.87)
+22-Jan-26 11:18:13 - Epoch: [20][3999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.4707e-01)	Acc@1 100.00 ( 90.45)	Acc@5 100.00 ( 99.88)
+22-Jan-26 11:19:29 - Epoch: [20][4999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.001)	Loss 3.1882e-02 (8.2199e-01)	Acc@1 100.00 ( 90.72)	Acc@5 100.00 ( 99.88)
+22-Jan-26 11:20:45 - Epoch: [20][5999/9000]	Time  0.075 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.4144e-01)	Acc@1 100.00 ( 90.55)	Acc@5 100.00 ( 99.87)
+22-Jan-26 11:22:02 - Epoch: [20][6999/9000]	Time  0.082 ( 0.076)	Data  0.003 ( 0.001)	Loss 6.7134e+00 (8.5442e-01)	Acc@1   0.00 ( 90.54)	Acc@5 100.00 ( 99.86)
+22-Jan-26 11:23:18 - Epoch: [20][7999/9000]	Time  0.077 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (8.9528e-01)	Acc@1 100.00 ( 90.21)	Acc@5 100.00 ( 99.84)
+22-Jan-26 11:24:34 - Epoch: [20][8999/9000]	Time  0.068 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.6454e+00 (8.9740e-01)	Acc@1   0.00 ( 90.22)	Acc@5 100.00 ( 99.83)
+22-Jan-26 11:24:34 -  @Training * Acc@1 90.222 Acc@5 99.833 Loss 0.897
+22-Jan-26 11:24:34 - One training epoch latency: 687.5s | Avg Power: 186.1W | Energy: 127955.8034J
+22-Jan-26 11:24:45 -  @Testing * Acc@1 71.700 Acc@5 97.900 Loss 4.722
+22-Jan-26 11:24:45 - Best acc at epoch 20: 72.60000610351562
+22-Jan-26 11:24:45 - Last learning rate: [7.8125e-06]
+22-Jan-26 11:24:45 - 	 Epoch 21...
+22-Jan-26 11:26:01 - Epoch: [21][ 999/9000]	Time  0.067 ( 0.076)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (6.3227e-01)	Acc@1 100.00 ( 92.20)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:27:18 - Epoch: [21][1999/9000]	Time  0.074 ( 0.077)	Data  0.003 ( 0.001)	Loss 0.0000e+00 (7.1834e-01)	Acc@1 100.00 ( 92.25)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:28:34 - Epoch: [21][2999/9000]	Time  0.078 ( 0.077)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (7.4233e-01)	Acc@1 100.00 ( 92.03)	Acc@5 100.00 ( 99.93)
+22-Jan-26 11:29:50 - Epoch: [21][3999/9000]	Time  0.078 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.2888e-05 (7.1313e-01)	Acc@1 100.00 ( 91.93)	Acc@5 100.00 ( 99.95)
+22-Jan-26 11:31:07 - Epoch: [21][4999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 7.5695e-05 (7.6050e-01)	Acc@1 100.00 ( 91.60)	Acc@5 100.00 ( 99.94)
+22-Jan-26 11:32:23 - Epoch: [21][5999/9000]	Time  0.068 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.3842e-07 (7.6201e-01)	Acc@1 100.00 ( 91.55)	Acc@5 100.00 ( 99.92)
+22-Jan-26 11:33:39 - Epoch: [21][6999/9000]	Time  0.102 ( 0.076)	Data  0.002 ( 0.001)	Loss 1.1921e-07 (7.6242e-01)	Acc@1 100.00 ( 91.46)	Acc@5 100.00 ( 99.91)
+22-Jan-26 11:34:56 - Epoch: [21][7999/9000]	Time  0.076 ( 0.076)	Data  0.002 ( 0.001)	Loss 1.1921e-07 (7.8151e-01)	Acc@1 100.00 ( 91.34)	Acc@5 100.00 ( 99.91)
+22-Jan-26 11:36:12 - Epoch: [21][8999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.1503e+01 (7.9042e-01)	Acc@1   0.00 ( 91.24)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:36:12 -  @Training * Acc@1 91.244 Acc@5 99.900 Loss 0.790
+22-Jan-26 11:36:12 - One training epoch latency: 687.2s | Avg Power: 186.2W | Energy: 127938.3955J
+22-Jan-26 11:36:22 -  @Testing * Acc@1 69.800 Acc@5 97.000 Loss 5.935
+22-Jan-26 11:36:22 - Best acc at epoch 21: 72.60000610351562
+22-Jan-26 11:36:22 - Last learning rate: [7.8125e-06]
+22-Jan-26 11:36:23 - 	 Epoch 22...
+22-Jan-26 11:37:39 - Epoch: [22][ 999/9000]	Time  0.081 ( 0.077)	Data  0.001 ( 0.002)	Loss 6.9356e-04 (7.6095e-01)	Acc@1 100.00 ( 92.40)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:38:55 - Epoch: [22][1999/9000]	Time  0.078 ( 0.076)	Data  0.001 ( 0.001)	Loss 4.7769e+00 (6.0697e-01)	Acc@1   0.00 ( 93.35)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:40:12 - Epoch: [22][2999/9000]	Time  0.075 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.3192e-01)	Acc@1 100.00 ( 92.80)	Acc@5 100.00 ( 99.93)
+22-Jan-26 11:41:28 - Epoch: [22][3999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.6715e-01)	Acc@1 100.00 ( 92.70)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:42:44 - Epoch: [22][4999/9000]	Time  0.068 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (6.9721e-01)	Acc@1 100.00 ( 92.38)	Acc@5 100.00 ( 99.92)
+22-Jan-26 11:44:01 - Epoch: [22][5999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.9939e-01)	Acc@1 100.00 ( 92.18)	Acc@5 100.00 ( 99.92)
+22-Jan-26 11:45:17 - Epoch: [22][6999/9000]	Time  0.067 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.2016e-01)	Acc@1 100.00 ( 92.11)	Acc@5 100.00 ( 99.90)
+22-Jan-26 11:46:34 - Epoch: [22][7999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.4091e-01)	Acc@1 100.00 ( 92.06)	Acc@5 100.00 ( 99.89)
+22-Jan-26 11:47:50 - Epoch: [22][8999/9000]	Time  0.067 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.4246e-01)	Acc@1 100.00 ( 92.03)	Acc@5 100.00 ( 99.89)
+22-Jan-26 11:47:50 -  @Training * Acc@1 92.033 Acc@5 99.889 Loss 0.742
+22-Jan-26 11:47:51 - One training epoch latency: 687.9s | Avg Power: 186.0W | Energy: 127945.4351J
+22-Jan-26 11:48:01 -  @Testing * Acc@1 73.100 Acc@5 98.100 Loss 5.158
+22-Jan-26 11:48:01 - Best acc at epoch 22: 73.10000610351562
+22-Jan-26 11:48:01 - Last learning rate: [7.8125e-06]
+22-Jan-26 11:48:01 - 	 Epoch 23...
+22-Jan-26 11:49:18 - Epoch: [23][ 999/9000]	Time  0.076 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (5.2962e-01)	Acc@1 100.00 ( 93.80)	Acc@5 100.00 (100.00)
+22-Jan-26 11:50:34 - Epoch: [23][1999/9000]	Time  0.078 ( 0.077)	Data  0.002 ( 0.001)	Loss 7.7607e-02 (5.0775e-01)	Acc@1 100.00 ( 93.70)	Acc@5 100.00 (100.00)
+22-Jan-26 11:51:50 - Epoch: [23][2999/9000]	Time  0.076 ( 0.076)	Data  0.001 ( 0.001)	Loss 1.7733e-02 (5.1634e-01)	Acc@1 100.00 ( 93.60)	Acc@5 100.00 (100.00)
+22-Jan-26 11:53:07 - Epoch: [23][3999/9000]	Time  0.080 ( 0.076)	Data  0.001 ( 0.001)	Loss 5.9605e-07 (5.4962e-01)	Acc@1 100.00 ( 93.33)	Acc@5 100.00 ( 99.95)
+22-Jan-26 11:54:23 - Epoch: [23][4999/9000]	Time  0.068 ( 0.076)	Data  0.001 ( 0.001)	Loss 9.0944e-01 (5.9836e-01)	Acc@1   0.00 ( 93.14)	Acc@5 100.00 ( 99.96)
+22-Jan-26 11:55:39 - Epoch: [23][5999/9000]	Time  0.068 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (5.9760e-01)	Acc@1 100.00 ( 93.08)	Acc@5 100.00 ( 99.95)
+22-Jan-26 11:56:57 - Epoch: [23][6999/9000]	Time  0.083 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.0311e-01)	Acc@1 100.00 ( 93.14)	Acc@5 100.00 ( 99.96)
+22-Jan-26 11:58:14 - Epoch: [23][7999/9000]	Time  0.079 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.1331e-01)	Acc@1 100.00 ( 93.05)	Acc@5 100.00 ( 99.96)
+22-Jan-26 11:59:31 - Epoch: [23][8999/9000]	Time  0.067 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.2536e-01)	Acc@1 100.00 ( 92.90)	Acc@5 100.00 ( 99.96)
+22-Jan-26 11:59:31 -  @Training * Acc@1 92.900 Acc@5 99.956 Loss 0.625
+22-Jan-26 11:59:32 - One training epoch latency: 690.6s | Avg Power: 185.6W | Energy: 128159.0078J
+22-Jan-26 11:59:42 -  @Testing * Acc@1 72.400 Acc@5 97.700 Loss 5.020
+22-Jan-26 11:59:42 - Best acc at epoch 23: 73.10000610351562
+22-Jan-26 11:59:42 - Last learning rate: [3.90625e-06]
+22-Jan-26 11:59:42 - 	 Epoch 24...
+22-Jan-26 12:00:58 - Epoch: [24][ 999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.4621e-01)	Acc@1 100.00 ( 95.70)	Acc@5 100.00 (100.00)
+22-Jan-26 12:02:15 - Epoch: [24][1999/9000]	Time  0.071 ( 0.076)	Data  0.001 ( 0.002)	Loss 2.1458e-06 (2.9497e-01)	Acc@1 100.00 ( 95.80)	Acc@5 100.00 (100.00)
+22-Jan-26 12:03:31 - Epoch: [24][2999/9000]	Time  0.095 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.7888e-01)	Acc@1 100.00 ( 96.17)	Acc@5 100.00 ( 99.97)
+22-Jan-26 12:04:48 - Epoch: [24][3999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.0064e-01)	Acc@1 100.00 ( 96.00)	Acc@5 100.00 ( 99.98)
+22-Jan-26 12:06:04 - Epoch: [24][4999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.0501e-01)	Acc@1 100.00 ( 96.00)	Acc@5 100.00 ( 99.96)
+22-Jan-26 12:07:21 - Epoch: [24][5999/9000]	Time  0.067 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.0326e-01)	Acc@1 100.00 ( 95.88)	Acc@5 100.00 ( 99.97)
+22-Jan-26 12:08:37 - Epoch: [24][6999/9000]	Time  0.078 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.2647e-01)	Acc@1 100.00 ( 95.70)	Acc@5 100.00 ( 99.97)
+22-Jan-26 12:09:54 - Epoch: [24][7999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.2728e-01)	Acc@1 100.00 ( 95.65)	Acc@5 100.00 ( 99.98)
+22-Jan-26 12:11:10 - Epoch: [24][8999/9000]	Time  0.070 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.1835e-01)	Acc@1 100.00 ( 95.79)	Acc@5 100.00 ( 99.98)
+22-Jan-26 12:11:10 -  @Training * Acc@1 95.789 Acc@5 99.978 Loss 0.318
+22-Jan-26 12:11:10 - One training epoch latency: 687.9s | Avg Power: 185.6W | Energy: 127701.4208J
+22-Jan-26 12:11:20 -  @Testing * Acc@1 71.900 Acc@5 98.200 Loss 5.165
+22-Jan-26 12:11:20 - Best acc at epoch 24: 73.10000610351562
+22-Jan-26 12:11:20 - Last learning rate: [3.90625e-06]
+22-Jan-26 12:11:20 - 	 Epoch 25...
+22-Jan-26 12:12:37 - Epoch: [25][ 999/9000]	Time  0.078 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.6542e-01)	Acc@1 100.00 ( 96.20)	Acc@5 100.00 (100.00)
+22-Jan-26 12:13:53 - Epoch: [25][1999/9000]	Time  0.078 ( 0.076)	Data  0.001 ( 0.002)	Loss 3.9045e-04 (2.8487e-01)	Acc@1 100.00 ( 96.50)	Acc@5 100.00 (100.00)
+22-Jan-26 12:15:10 - Epoch: [25][2999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.8046e-01)	Acc@1 100.00 ( 96.47)	Acc@5 100.00 (100.00)
+22-Jan-26 12:16:26 - Epoch: [25][3999/9000]	Time  0.077 ( 0.076)	Data  0.002 ( 0.001)	Loss 8.9959e+00 (2.9701e-01)	Acc@1   0.00 ( 96.23)	Acc@5 100.00 (100.00)
+22-Jan-26 12:17:42 - Epoch: [25][4999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 6.5565e-06 (3.0398e-01)	Acc@1 100.00 ( 96.06)	Acc@5 100.00 (100.00)
+22-Jan-26 12:18:59 - Epoch: [25][5999/9000]	Time  0.080 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.1032e-01)	Acc@1 100.00 ( 96.07)	Acc@5 100.00 (100.00)
+22-Jan-26 12:20:15 - Epoch: [25][6999/9000]	Time  0.078 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.0601e-01)	Acc@1 100.00 ( 96.10)	Acc@5 100.00 ( 99.99)
+22-Jan-26 12:21:31 - Epoch: [25][7999/9000]	Time  0.103 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.1490e-01)	Acc@1 100.00 ( 95.95)	Acc@5 100.00 ( 99.99)
+22-Jan-26 12:22:48 - Epoch: [25][8999/9000]	Time  0.065 ( 0.076)	Data  0.003 ( 0.001)	Loss 0.0000e+00 (3.0947e-01)	Acc@1 100.00 ( 95.92)	Acc@5 100.00 ( 99.99)
+22-Jan-26 12:22:48 -  @Training * Acc@1 95.922 Acc@5 99.989 Loss 0.309
+22-Jan-26 12:22:48 - One training epoch latency: 687.6s | Avg Power: 185.5W | Energy: 127562.4502J
+22-Jan-26 12:22:58 -  @Testing * Acc@1 73.300 Acc@5 98.500 Loss 5.146
+22-Jan-26 12:22:58 - Best acc at epoch 25: 73.30000305175781
+22-Jan-26 12:22:58 - Last learning rate: [3.90625e-06]
+22-Jan-26 12:22:58 - 	 Epoch 26...
+22-Jan-26 12:24:15 - Epoch: [26][ 999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (1.4624e-01)	Acc@1 100.00 ( 97.40)	Acc@5 100.00 (100.00)
+22-Jan-26 12:25:32 - Epoch: [26][1999/9000]	Time  0.075 ( 0.077)	Data  0.002 ( 0.002)	Loss 0.0000e+00 (2.7537e-01)	Acc@1 100.00 ( 96.35)	Acc@5 100.00 ( 99.95)
+22-Jan-26 12:26:48 - Epoch: [26][2999/9000]	Time  0.070 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.7775e-01)	Acc@1 100.00 ( 96.03)	Acc@5 100.00 ( 99.97)
+22-Jan-26 12:28:05 - Epoch: [26][3999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.7189e-01)	Acc@1 100.00 ( 96.18)	Acc@5 100.00 ( 99.98)
+22-Jan-26 12:29:22 - Epoch: [26][4999/9000]	Time  0.091 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.7329e-01)	Acc@1 100.00 ( 96.14)	Acc@5 100.00 ( 99.98)
+22-Jan-26 12:30:38 - Epoch: [26][5999/9000]	Time  0.069 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.6062e-01)	Acc@1 100.00 ( 96.27)	Acc@5 100.00 ( 99.98)
+22-Jan-26 12:31:54 - Epoch: [26][6999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.5922e-01)	Acc@1 100.00 ( 96.26)	Acc@5 100.00 ( 99.99)
+22-Jan-26 12:33:11 - Epoch: [26][7999/9000]	Time  0.103 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.5583e-01)	Acc@1 100.00 ( 96.33)	Acc@5 100.00 ( 99.99)
+22-Jan-26 12:34:27 - Epoch: [26][8999/9000]	Time  0.066 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.5027e-01)	Acc@1 100.00 ( 96.31)	Acc@5 100.00 ( 99.99)
+22-Jan-26 12:34:27 -  @Training * Acc@1 96.311 Acc@5 99.989 Loss 0.250
+22-Jan-26 12:34:27 - One training epoch latency: 689.0s | Avg Power: 185.6W | Energy: 127849.5420J
+22-Jan-26 12:34:37 -  @Testing * Acc@1 74.700 Acc@5 98.000 Loss 5.032
+22-Jan-26 12:34:37 - Best acc at epoch 26: 74.70000457763672
+22-Jan-26 12:34:38 - Last learning rate: [3.90625e-06]
+22-Jan-26 12:34:38 - 	 Epoch 27...
+22-Jan-26 12:35:54 - Epoch: [27][ 999/9000]	Time  0.080 ( 0.076)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (2.5491e-01)	Acc@1 100.00 ( 97.30)	Acc@5 100.00 (100.00)
+22-Jan-26 12:37:11 - Epoch: [27][1999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (2.6620e-01)	Acc@1 100.00 ( 97.05)	Acc@5 100.00 (100.00)
+22-Jan-26 12:38:27 - Epoch: [27][2999/9000]	Time  0.073 ( 0.076)	Data  0.001 ( 0.001)	Loss 5.4907e-02 (2.3231e-01)	Acc@1 100.00 ( 97.50)	Acc@5 100.00 (100.00)
+22-Jan-26 12:39:43 - Epoch: [27][3999/9000]	Time  0.075 ( 0.076)	Data  0.001 ( 0.001)	Loss 1.3113e-06 (2.1609e-01)	Acc@1 100.00 ( 97.25)	Acc@5 100.00 (100.00)
+22-Jan-26 12:41:00 - Epoch: [27][4999/9000]	Time  0.078 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (2.2353e-01)	Acc@1 100.00 ( 97.26)	Acc@5 100.00 (100.00)
+22-Jan-26 12:42:16 - Epoch: [27][5999/9000]	Time  0.066 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.2209e-01)	Acc@1 100.00 ( 97.18)	Acc@5 100.00 (100.00)
+22-Jan-26 12:43:33 - Epoch: [27][6999/9000]	Time  0.104 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.3583e-01)	Acc@1 100.00 ( 97.10)	Acc@5 100.00 (100.00)
+22-Jan-26 12:44:49 - Epoch: [27][7999/9000]	Time  0.067 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (2.3579e-01)	Acc@1 100.00 ( 97.04)	Acc@5 100.00 (100.00)
+22-Jan-26 12:46:05 - Epoch: [27][8999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 3.0994e-06 (2.4003e-01)	Acc@1 100.00 ( 96.97)	Acc@5 100.00 (100.00)
+22-Jan-26 12:46:05 -  @Training * Acc@1 96.967 Acc@5 100.000 Loss 0.240
+22-Jan-26 12:46:05 - One training epoch latency: 687.6s | Avg Power: 185.8W | Energy: 127788.3018J
+22-Jan-26 12:46:16 -  @Testing * Acc@1 73.300 Acc@5 97.900 Loss 5.110
+22-Jan-26 12:46:16 - Best acc at epoch 27: 74.70000457763672
+22-Jan-26 12:46:16 - Last learning rate: [3.90625e-06]
+22-Jan-26 12:46:16 - 	 Epoch 28...
+22-Jan-26 12:47:32 - Epoch: [28][ 999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (1.6076e-01)	Acc@1 100.00 ( 97.70)	Acc@5 100.00 (100.00)
+22-Jan-26 12:48:49 - Epoch: [28][1999/9000]	Time  0.080 ( 0.077)	Data  0.001 ( 0.002)	Loss 3.2105e-03 (1.4955e-01)	Acc@1 100.00 ( 97.85)	Acc@5 100.00 (100.00)
+22-Jan-26 12:50:06 - Epoch: [28][2999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.5723e-01)	Acc@1 100.00 ( 97.53)	Acc@5 100.00 (100.00)
+22-Jan-26 12:51:22 - Epoch: [28][3999/9000]	Time  0.071 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.9349e-01)	Acc@1 100.00 ( 97.28)	Acc@5 100.00 (100.00)
+22-Jan-26 12:52:39 - Epoch: [28][4999/9000]	Time  0.071 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.1921e-07 (1.8799e-01)	Acc@1 100.00 ( 97.36)	Acc@5 100.00 (100.00)
+22-Jan-26 12:53:55 - Epoch: [28][5999/9000]	Time  0.075 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.8120e-01)	Acc@1 100.00 ( 97.38)	Acc@5 100.00 (100.00)
+22-Jan-26 12:55:11 - Epoch: [28][6999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7928e-01)	Acc@1 100.00 ( 97.43)	Acc@5 100.00 (100.00)
+22-Jan-26 12:56:28 - Epoch: [28][7999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.8503e-01)	Acc@1 100.00 ( 97.39)	Acc@5 100.00 (100.00)
+22-Jan-26 12:57:44 - Epoch: [28][8999/9000]	Time  0.062 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7901e-01)	Acc@1 100.00 ( 97.41)	Acc@5 100.00 (100.00)
+22-Jan-26 12:57:44 -  @Training * Acc@1 97.411 Acc@5 100.000 Loss 0.179
+22-Jan-26 12:57:44 - One training epoch latency: 688.7s | Avg Power: 185.9W | Energy: 128045.3386J
+22-Jan-26 12:57:54 -  @Testing * Acc@1 73.900 Acc@5 98.000 Loss 5.098
+22-Jan-26 12:57:54 - Best acc at epoch 28: 74.70000457763672
+22-Jan-26 12:57:54 - Last learning rate: [3.90625e-06]
+22-Jan-26 12:57:54 - 	 Epoch 29...
+22-Jan-26 12:59:11 - Epoch: [29][ 999/9000]	Time  0.068 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (1.7461e-01)	Acc@1 100.00 ( 97.60)	Acc@5 100.00 (100.00)
+22-Jan-26 13:00:27 - Epoch: [29][1999/9000]	Time  0.075 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.5028e-01)	Acc@1 100.00 ( 97.65)	Acc@5 100.00 (100.00)
+22-Jan-26 13:01:43 - Epoch: [29][2999/9000]	Time  0.073 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.5591e-04 (1.6812e-01)	Acc@1 100.00 ( 97.60)	Acc@5 100.00 (100.00)
+22-Jan-26 13:02:59 - Epoch: [29][3999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7103e-01)	Acc@1 100.00 ( 97.38)	Acc@5 100.00 (100.00)
+22-Jan-26 13:04:16 - Epoch: [29][4999/9000]	Time  0.072 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (1.5623e-01)	Acc@1 100.00 ( 97.58)	Acc@5 100.00 (100.00)
+22-Jan-26 13:05:31 - Epoch: [29][5999/9000]	Time  0.096 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7102e-01)	Acc@1 100.00 ( 97.48)	Acc@5 100.00 (100.00)
+22-Jan-26 13:06:48 - Epoch: [29][6999/9000]	Time  0.076 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7672e-01)	Acc@1 100.00 ( 97.40)	Acc@5 100.00 (100.00)
+22-Jan-26 13:08:04 - Epoch: [29][7999/9000]	Time  0.081 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.7829e-01)	Acc@1 100.00 ( 97.40)	Acc@5 100.00 (100.00)
+22-Jan-26 13:09:20 - Epoch: [29][8999/9000]	Time  0.067 ( 0.076)	Data  0.002 ( 0.001)	Loss 5.3644e-06 (1.8937e-01)	Acc@1 100.00 ( 97.36)	Acc@5 100.00 (100.00)
+22-Jan-26 13:09:20 -  @Training * Acc@1 97.356 Acc@5 100.000 Loss 0.189
+22-Jan-26 13:09:20 - One training epoch latency: 685.5s | Avg Power: 186.2W | Energy: 127617.1472J
+22-Jan-26 13:09:30 -  @Testing * Acc@1 75.600 Acc@5 97.700 Loss 4.986
+22-Jan-26 13:09:30 - Best acc at epoch 29: 75.60000610351562
+22-Jan-26 13:09:30 - Last learning rate: [1.953125e-06]
+22-Jan-26 13:09:30 - 	 Epoch 30...
+22-Jan-26 13:10:47 - Epoch: [30][ 999/9000]	Time  0.073 ( 0.076)	Data  0.001 ( 0.002)	Loss 9.5620e+00 (6.2766e-02)	Acc@1   0.00 ( 99.00)	Acc@5 100.00 (100.00)
+22-Jan-26 13:12:03 - Epoch: [30][1999/9000]	Time  0.076 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.8134e-02)	Acc@1 100.00 ( 98.90)	Acc@5 100.00 (100.00)
+22-Jan-26 13:13:20 - Epoch: [30][2999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.7203e-02)	Acc@1 100.00 ( 98.73)	Acc@5 100.00 (100.00)
+22-Jan-26 13:14:36 - Epoch: [30][3999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.9523e-02)	Acc@1 100.00 ( 98.65)	Acc@5 100.00 (100.00)
+22-Jan-26 13:15:52 - Epoch: [30][4999/9000]	Time  0.080 ( 0.076)	Data  0.003 ( 0.001)	Loss 0.0000e+00 (7.9223e-02)	Acc@1 100.00 ( 98.74)	Acc@5 100.00 (100.00)
+22-Jan-26 13:17:09 - Epoch: [30][5999/9000]	Time  0.077 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (9.0805e-02)	Acc@1 100.00 ( 98.65)	Acc@5 100.00 (100.00)
+22-Jan-26 13:18:25 - Epoch: [30][6999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (9.3219e-02)	Acc@1 100.00 ( 98.56)	Acc@5 100.00 (100.00)
+22-Jan-26 13:19:42 - Epoch: [30][7999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (9.0963e-02)	Acc@1 100.00 ( 98.58)	Acc@5 100.00 (100.00)
+22-Jan-26 13:20:58 - Epoch: [30][8999/9000]	Time  0.067 ( 0.076)	Data  0.005 ( 0.001)	Loss 0.0000e+00 (8.9805e-02)	Acc@1 100.00 ( 98.57)	Acc@5 100.00 (100.00)
+22-Jan-26 13:20:58 -  @Training * Acc@1 98.567 Acc@5 100.000 Loss 0.090
+22-Jan-26 13:20:58 - One training epoch latency: 687.3s | Avg Power: 185.6W | Energy: 127542.7583J
+22-Jan-26 13:21:08 -  @Testing * Acc@1 73.800 Acc@5 97.700 Loss 5.303
+22-Jan-26 13:21:08 - Best acc at epoch 30: 75.60000610351562
+22-Jan-26 13:21:08 - Last learning rate: [1.953125e-06]
+22-Jan-26 13:21:08 - 	 Epoch 31...
+22-Jan-26 13:22:25 - Epoch: [31][ 999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (3.6290e-02)	Acc@1 100.00 ( 99.00)	Acc@5 100.00 (100.00)
+22-Jan-26 13:23:41 - Epoch: [31][1999/9000]	Time  0.066 ( 0.076)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (7.9038e-02)	Acc@1 100.00 ( 98.75)	Acc@5 100.00 (100.00)
+22-Jan-26 13:24:58 - Epoch: [31][2999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.3350e-04 (9.2365e-02)	Acc@1 100.00 ( 98.57)	Acc@5 100.00 (100.00)
+22-Jan-26 13:26:14 - Epoch: [31][3999/9000]	Time  0.072 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (8.3531e-02)	Acc@1 100.00 ( 98.70)	Acc@5 100.00 (100.00)
+22-Jan-26 13:27:30 - Epoch: [31][4999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (1.0087e-01)	Acc@1 100.00 ( 98.62)	Acc@5 100.00 (100.00)
+22-Jan-26 13:28:46 - Epoch: [31][5999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (9.6864e-02)	Acc@1 100.00 ( 98.67)	Acc@5 100.00 (100.00)
+22-Jan-26 13:30:03 - Epoch: [31][6999/9000]	Time  0.068 ( 0.076)	Data  0.001 ( 0.001)	Loss 1.5139e-05 (9.4785e-02)	Acc@1 100.00 ( 98.67)	Acc@5 100.00 (100.00)
+22-Jan-26 13:31:18 - Epoch: [31][7999/9000]	Time  0.078 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (9.4707e-02)	Acc@1 100.00 ( 98.69)	Acc@5 100.00 (100.00)
+22-Jan-26 13:32:34 - Epoch: [31][8999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (9.6500e-02)	Acc@1 100.00 ( 98.62)	Acc@5 100.00 (100.00)
+22-Jan-26 13:32:34 -  @Training * Acc@1 98.622 Acc@5 100.000 Loss 0.096
+22-Jan-26 13:32:34 - One training epoch latency: 685.8s | Avg Power: 185.9W | Energy: 127504.5690J
+22-Jan-26 13:32:45 -  @Testing * Acc@1 74.200 Acc@5 97.700 Loss 5.426
+22-Jan-26 13:32:45 - Best acc at epoch 31: 75.60000610351562
+22-Jan-26 13:32:45 - Last learning rate: [1.953125e-06]
+22-Jan-26 13:32:45 - 	 Epoch 32...
+22-Jan-26 13:34:01 - Epoch: [32][ 999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (1.4451e-01)	Acc@1 100.00 ( 98.40)	Acc@5 100.00 (100.00)
+22-Jan-26 13:35:17 - Epoch: [32][1999/9000]	Time  0.076 ( 0.076)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (9.8593e-02)	Acc@1 100.00 ( 98.85)	Acc@5 100.00 (100.00)
+22-Jan-26 13:36:33 - Epoch: [32][2999/9000]	Time  0.075 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.6576e-02)	Acc@1 100.00 ( 98.90)	Acc@5 100.00 (100.00)
+22-Jan-26 13:37:50 - Epoch: [32][3999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.2403e-02)	Acc@1 100.00 ( 98.93)	Acc@5 100.00 (100.00)
+22-Jan-26 13:39:06 - Epoch: [32][4999/9000]	Time  0.078 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.7438e-02)	Acc@1 100.00 ( 98.82)	Acc@5 100.00 (100.00)
+22-Jan-26 13:40:22 - Epoch: [32][5999/9000]	Time  0.071 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.4671e-02)	Acc@1 100.00 ( 98.87)	Acc@5 100.00 (100.00)
+22-Jan-26 13:41:39 - Epoch: [32][6999/9000]	Time  0.073 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (8.4967e-02)	Acc@1 100.00 ( 98.87)	Acc@5 100.00 (100.00)
+22-Jan-26 13:42:55 - Epoch: [32][7999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (8.6518e-02)	Acc@1 100.00 ( 98.80)	Acc@5 100.00 (100.00)
+22-Jan-26 13:44:11 - Epoch: [32][8999/9000]	Time  0.061 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (8.8553e-02)	Acc@1 100.00 ( 98.77)	Acc@5 100.00 (100.00)
+22-Jan-26 13:44:11 -  @Training * Acc@1 98.767 Acc@5 100.000 Loss 0.089
+22-Jan-26 13:44:11 - One training epoch latency: 686.1s | Avg Power: 186.2W | Energy: 127749.4914J
+22-Jan-26 13:44:21 -  @Testing * Acc@1 74.500 Acc@5 97.800 Loss 5.208
+22-Jan-26 13:44:21 - Best acc at epoch 32: 75.60000610351562
+22-Jan-26 13:44:21 - Last learning rate: [1.953125e-06]
+22-Jan-26 13:44:21 - 	 Epoch 33...
+22-Jan-26 13:45:38 - Epoch: [33][ 999/9000]	Time  0.084 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (6.8504e-02)	Acc@1 100.00 ( 98.50)	Acc@5 100.00 (100.00)
+22-Jan-26 13:46:54 - Epoch: [33][1999/9000]	Time  0.073 ( 0.076)	Data  0.001 ( 0.002)	Loss 7.1526e-07 (6.1558e-02)	Acc@1 100.00 ( 98.80)	Acc@5 100.00 (100.00)
+22-Jan-26 13:48:11 - Epoch: [33][2999/9000]	Time  0.084 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (5.7397e-02)	Acc@1 100.00 ( 98.83)	Acc@5 100.00 (100.00)
+22-Jan-26 13:49:27 - Epoch: [33][3999/9000]	Time  0.069 ( 0.076)	Data  0.001 ( 0.001)	Loss 2.2440e+01 (8.0011e-02)	Acc@1   0.00 ( 98.70)	Acc@5 100.00 (100.00)
+22-Jan-26 13:50:43 - Epoch: [33][4999/9000]	Time  0.077 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.3009e-02)	Acc@1 100.00 ( 98.72)	Acc@5 100.00 (100.00)
+22-Jan-26 13:52:00 - Epoch: [33][5999/9000]	Time  0.070 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.3070e-02)	Acc@1 100.00 ( 98.75)	Acc@5 100.00 (100.00)
+22-Jan-26 13:53:16 - Epoch: [33][6999/9000]	Time  0.070 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.2388e-02)	Acc@1 100.00 ( 98.81)	Acc@5 100.00 (100.00)
+22-Jan-26 13:54:32 - Epoch: [33][7999/9000]	Time  0.081 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.6930e-02)	Acc@1 100.00 ( 98.83)	Acc@5 100.00 (100.00)
+22-Jan-26 13:55:49 - Epoch: [33][8999/9000]	Time  0.062 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (7.3957e-02)	Acc@1 100.00 ( 98.80)	Acc@5 100.00 (100.00)
+22-Jan-26 13:55:49 -  @Training * Acc@1 98.800 Acc@5 100.000 Loss 0.074
+22-Jan-26 13:55:49 - One training epoch latency: 687.6s | Avg Power: 186.1W | Energy: 127943.6006J
+22-Jan-26 13:55:59 -  @Testing * Acc@1 74.400 Acc@5 97.700 Loss 5.174
+22-Jan-26 13:55:59 - Best acc at epoch 33: 75.60000610351562
+22-Jan-26 13:55:59 - Last learning rate: [1.953125e-06]
+22-Jan-26 13:55:59 - 	 Epoch 34...
+22-Jan-26 13:57:16 - Epoch: [34][ 999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (4.8123e-02)	Acc@1 100.00 ( 99.20)	Acc@5 100.00 (100.00)
+22-Jan-26 13:58:32 - Epoch: [34][1999/9000]	Time  0.077 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.8418e-03 (5.0304e-02)	Acc@1 100.00 ( 99.15)	Acc@5 100.00 (100.00)
+22-Jan-26 13:59:48 - Epoch: [34][2999/9000]	Time  0.072 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.5652e-02)	Acc@1 100.00 ( 99.23)	Acc@5 100.00 (100.00)
+22-Jan-26 14:01:05 - Epoch: [34][3999/9000]	Time  0.069 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (4.7620e-02)	Acc@1 100.00 ( 99.13)	Acc@5 100.00 (100.00)
+22-Jan-26 14:02:20 - Epoch: [34][4999/9000]	Time  0.068 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.8047e-02)	Acc@1 100.00 ( 99.12)	Acc@5 100.00 (100.00)
+22-Jan-26 14:03:37 - Epoch: [34][5999/9000]	Time  0.081 ( 0.076)	Data  0.003 ( 0.001)	Loss 0.0000e+00 (6.2551e-02)	Acc@1 100.00 ( 99.00)	Acc@5 100.00 (100.00)
+22-Jan-26 14:04:53 - Epoch: [34][6999/9000]	Time  0.071 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.0443e-02)	Acc@1 100.00 ( 98.97)	Acc@5 100.00 (100.00)
+22-Jan-26 14:06:09 - Epoch: [34][7999/9000]	Time  0.099 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (5.8330e-02)	Acc@1 100.00 ( 98.96)	Acc@5 100.00 (100.00)
+22-Jan-26 14:07:26 - Epoch: [34][8999/9000]	Time  0.060 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (6.0269e-02)	Acc@1 100.00 ( 98.92)	Acc@5 100.00 (100.00)
+22-Jan-26 14:07:26 -  @Training * Acc@1 98.922 Acc@5 100.000 Loss 0.060
+22-Jan-26 14:07:26 - One training epoch latency: 687.2s | Avg Power: 185.9W | Energy: 127725.3710J
+22-Jan-26 14:07:37 -  @Testing * Acc@1 74.200 Acc@5 97.600 Loss 5.222
+22-Jan-26 14:07:37 - Best acc at epoch 34: 75.60000610351562
+22-Jan-26 14:07:37 - Last learning rate: [1.953125e-06]
+22-Jan-26 14:07:37 - 	 Epoch 35...
+22-Jan-26 14:08:53 - Epoch: [35][ 999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.002)	Loss 0.0000e+00 (5.0000e-02)	Acc@1 100.00 ( 99.50)	Acc@5 100.00 (100.00)
+22-Jan-26 14:10:10 - Epoch: [35][1999/9000]	Time  0.076 ( 0.077)	Data  0.005 ( 0.002)	Loss 0.0000e+00 (5.4475e-02)	Acc@1 100.00 ( 99.40)	Acc@5 100.00 (100.00)
+22-Jan-26 14:11:26 - Epoch: [35][2999/9000]	Time  0.072 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (5.1992e-02)	Acc@1 100.00 ( 99.30)	Acc@5 100.00 (100.00)
+22-Jan-26 14:12:43 - Epoch: [35][3999/9000]	Time  0.114 ( 0.076)	Data  0.006 ( 0.001)	Loss 0.0000e+00 (5.9580e-02)	Acc@1 100.00 ( 99.25)	Acc@5 100.00 (100.00)
+22-Jan-26 14:13:59 - Epoch: [35][4999/9000]	Time  0.082 ( 0.076)	Data  0.005 ( 0.001)	Loss 0.0000e+00 (5.6171e-02)	Acc@1 100.00 ( 99.22)	Acc@5 100.00 (100.00)
+22-Jan-26 14:15:15 - Epoch: [35][5999/9000]	Time  0.074 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (5.6078e-02)	Acc@1 100.00 ( 99.17)	Acc@5 100.00 (100.00)
+22-Jan-26 14:16:32 - Epoch: [35][6999/9000]	Time  0.072 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (5.7696e-02)	Acc@1 100.00 ( 99.07)	Acc@5 100.00 (100.00)
+22-Jan-26 14:17:49 - Epoch: [35][7999/9000]	Time  0.100 ( 0.076)	Data  0.002 ( 0.001)	Loss 0.0000e+00 (6.5403e-02)	Acc@1 100.00 ( 99.05)	Acc@5 100.00 (100.00)
+22-Jan-26 14:19:04 - Epoch: [35][8999/9000]	Time  0.095 ( 0.076)	Data  0.003 ( 0.001)	Loss 0.0000e+00 (6.5780e-02)	Acc@1 100.00 ( 99.02)	Acc@5 100.00 (100.00)
+22-Jan-26 14:19:05 -  @Training * Acc@1 99.022 Acc@5 100.000 Loss 0.066
+22-Jan-26 14:19:05 - One training epoch latency: 688.0s | Avg Power: 185.6W | Energy: 127686.5580J
+22-Jan-26 14:19:15 -  @Testing * Acc@1 74.200 Acc@5 97.800 Loss 5.372
+22-Jan-26 14:19:15 - Best acc at epoch 35: 75.60000610351562
+22-Jan-26 14:19:15 - Last learning rate: [9.765625e-07]
+22-Jan-26 14:19:15 - 	 Epoch 36...
+22-Jan-26 14:20:32 - Epoch: [36][ 999/9000]	Time  0.077 ( 0.077)	Data  0.002 ( 0.002)	Loss 0.0000e+00 (7.3518e-02)	Acc@1 100.00 ( 99.00)	Acc@5 100.00 (100.00)
+22-Jan-26 14:21:48 - Epoch: [36][1999/9000]	Time  0.083 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (5.1975e-02)	Acc@1 100.00 ( 99.15)	Acc@5 100.00 (100.00)
+22-Jan-26 14:23:05 - Epoch: [36][2999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.8107e-02)	Acc@1 100.00 ( 99.20)	Acc@5 100.00 (100.00)
+22-Jan-26 14:24:21 - Epoch: [36][3999/9000]	Time  0.066 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.9999e-02)	Acc@1 100.00 ( 99.10)	Acc@5 100.00 (100.00)
+22-Jan-26 14:25:38 - Epoch: [36][4999/9000]	Time  0.078 ( 0.077)	Data  0.001 ( 0.001)	Loss 1.1921e-07 (4.5102e-02)	Acc@1 100.00 ( 99.12)	Acc@5 100.00 (100.00)
+22-Jan-26 14:26:54 - Epoch: [36][5999/9000]	Time  0.080 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.8231e-02)	Acc@1 100.00 ( 99.23)	Acc@5 100.00 (100.00)
+22-Jan-26 14:28:11 - Epoch: [36][6999/9000]	Time  0.074 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.6315e-02)	Acc@1 100.00 ( 99.20)	Acc@5 100.00 (100.00)
+22-Jan-26 14:29:28 - Epoch: [36][7999/9000]	Time  0.075 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.4847e-02)	Acc@1 100.00 ( 99.25)	Acc@5 100.00 (100.00)
+22-Jan-26 14:30:44 - Epoch: [36][8999/9000]	Time  0.060 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (4.3767e-02)	Acc@1 100.00 ( 99.26)	Acc@5 100.00 (100.00)
+22-Jan-26 14:30:45 -  @Training * Acc@1 99.256 Acc@5 100.000 Loss 0.044
+22-Jan-26 14:30:45 - One training epoch latency: 689.6s | Avg Power: 185.7W | Energy: 128028.2603J
+22-Jan-26 14:30:55 -  @Testing * Acc@1 74.000 Acc@5 97.900 Loss 5.305
+22-Jan-26 14:30:55 - Best acc at epoch 36: 75.60000610351562
+22-Jan-26 14:30:55 - Last learning rate: [9.765625e-07]
+22-Jan-26 14:30:55 - 	 Epoch 37...
+22-Jan-26 14:32:12 - Epoch: [37][ 999/9000]	Time  0.071 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.5474e-02)	Acc@1 100.00 ( 99.30)	Acc@5 100.00 (100.00)
+22-Jan-26 14:33:28 - Epoch: [37][1999/9000]	Time  0.069 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.5459e-02)	Acc@1 100.00 ( 99.25)	Acc@5 100.00 (100.00)
+22-Jan-26 14:34:45 - Epoch: [37][2999/9000]	Time  0.109 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.3817e-02)	Acc@1 100.00 ( 99.37)	Acc@5 100.00 (100.00)
+22-Jan-26 14:36:01 - Epoch: [37][3999/9000]	Time  0.073 ( 0.077)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.5498e-02)	Acc@1 100.00 ( 99.35)	Acc@5 100.00 (100.00)
+22-Jan-26 14:37:17 - Epoch: [37][4999/9000]	Time  0.067 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.3149e-02)	Acc@1 100.00 ( 99.34)	Acc@5 100.00 (100.00)
+22-Jan-26 14:38:34 - Epoch: [37][5999/9000]	Time  0.083 ( 0.076)	Data  0.001 ( 0.001)	Loss 0.0000e+00 (3.8132e-02)	Acc@1 100.00 ( 99.33)	Acc@5 100.00 (100.00)
+22-Jan-26 14:39:50 - Epoch: [37][6999/9000]	Time  0.083 ( 0.076)	Data  0.006 ( 0.001)	Loss 0.0000e+00 (3.8775e-02)	Acc@1 100.00 ( 99.31)	Acc@5 100.00 (100.00)
